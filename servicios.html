@@ -41,6 +41,77 @@
     "description":"Reclutamiento especializado, evaluación, onboarding y soluciones de expansión legal."
   }
   </script>
+    <style>
+        /* Grid y disposición */
+        .features3__grid {
+            display: grid;
+            gap: clamp(2rem, 4vw, 3rem) clamp(2rem, 5vw, 4rem);
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            align-items: start;
+        }
+
+        /* Tarjeta sencilla centrada */
+        .feature {
+            text-align: center;
+            max-width: 580px;
+            margin-inline: auto;
+        }
+
+        /* Contenedor del “icono” (SVG inline) */
+        .feature__media {
+            display: grid;
+            place-items: center;
+            width: min(320px, 90%);
+            margin: 0 auto clamp(1rem, 2.5vw, 1.4rem);
+            padding: clamp(.9rem, 2.2vw, 1.2rem);
+            border-radius: 18px;
+            background: var(--color-bg-alt);
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .feature__icon {
+            display: block;
+            max-width: 128px;
+            height: auto;
+        }
+
+        /* Tipografía y colores */
+        .feature__title {
+            font-size: clamp(1.35rem, 2.2vw, 1.8rem);
+            line-height: 1.2;
+            margin: 0 0 .8rem;
+            font-weight: 700;
+            letter-spacing: .01em;
+            color: var(--color-brand-light);
+        }
+
+        .feature__text {
+            margin: 0 auto;
+            color: var(--color-muted);
+            font-size: clamp(.98rem, 1.3vw, 1.05rem);
+            line-height: 1.7;
+            max-width: 58ch;
+        }
+
+        /* Hover sutil */
+        .feature:hover .feature__media {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
+
+        /* Responsive fino */
+        @media (max-width: 640px) {
+            .feature__title {
+                font-size: 1.22rem;
+            }
+
+            .feature__text {
+                font-size: .96rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -61,7 +132,7 @@
                     <li><a href="/" data-link="home">Inicio</a></li>
                     <li><a href="/nosotros.html" data-link="nosotros">Conócenos</a></li>
                     <li><a href="/servicios.html" data-link="servicios">Servicios</a></li>
-                    <li><a href="#contacto" class="btn btn--sm btn--outline" data-link="contacto">Contacto</a></li>
+                    <li><a href="/index.html#contacto" class="btn btn--sm btn--outline" data-link="contacto">Contacto</a></li>
                 </ul>
             </nav>
         </div>
@@ -87,112 +158,82 @@
             </div>
         </section>
 
-        <section class="section" aria-labelledby="serviciosCoreTitle">
+        <section id="servicios" class="section features3" aria-labelledby="servicios-title">
             <div class="container">
-                <h2 class="section__title" id="serviciosCoreTitle">Portafolio <span class="highlight">Principal</span>
-                </h2>
-                <div class="services__grid">
-                    <article class="service-card">
-                        <div class="service-card__media">
-                            <img src="assets/servicios/reclutamiento.jpg" alt="Proceso de reclutamiento" loading="lazy">
-                            <span class="service-card__icon">👤</span>
+                <h2 id="servicios-title" class="section__title">Soluciones de talento</h2>
+
+                <div class="features3__grid">
+                    <!-- Item 1 -->
+                    <article class="feature">
+                        <div class="feature__media" aria-hidden="true">
+                            <!-- Icono inline: documento + check -->
+                            <svg class="feature__icon" viewBox="0 0 64 64" width="128" height="128"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" stroke="var(--color-primary-dark)" stroke-width="2.5"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="14" y="10" width="30" height="44" rx="6" ry="6"
+                                        stroke="var(--color-primary-mid)" />
+                                    <path d="M20 22h18M20 30h18M20 38h10" />
+                                    <path d="M44 42l6 6 12-12" stroke="var(--color-brand-light)" />
+                                </g>
+                            </svg>
                         </div>
-                        <div class="service-card__body">
-                            <h3 class="service-card__title">Reclutamiento Especializado</h3>
-                            <p>Perfiles clave con filtros técnicos y culturales. Time-to-hire reducido y
-                                predictibilidad.</p>
-                            <ul class="about__bullets">
-                                <li>Mapeo de rol y scorecards</li>
-                                <li>Entrevistas estructuradas</li>
-                                <li>Validación técnica externa</li>
-                            </ul>
-                            <a href="/index.html#contacto" class="service-card__cta">Quiero talento →</a>
-                        </div>
+                        <h3 class="feature__title">Servicios en contratación</h3>
+                        <p class="feature__text">
+                            Tenemos diferentes soluciones apegado a las necesidades de tu empresa. Nosotros buscamos y
+                            evaluamos calidad humana y buenas habilidades ¡Tu eliges y contratas!
+                        </p>
                     </article>
 
-                    <article class="service-card">
-                        <div class="service-card__media">
-                            <img src="assets/servicios/evaluaciones.jpg" alt="Evaluaciones y métricas" loading="lazy">
-                            <span class="service-card__icon">🧪</span>
+                    <!-- Item 2 -->
+                    <article class="feature">
+                        <div class="feature__media" aria-hidden="true">
+                            <!-- Icono inline: barras + tendencia -->
+                            <svg class="feature__icon" viewBox="0 0 64 64" width="128" height="128"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M10 52H54" stroke="var(--color-primary-mid)" stroke-width="2.5" />
+                                    <rect x="14" y="36" width="8" height="16" fill="none"
+                                        stroke="var(--color-primary-dark)" stroke-width="2.5" rx="1.5" />
+                                    <rect x="28" y="30" width="8" height="22" fill="none"
+                                        stroke="var(--color-primary-dark)" stroke-width="2.5" rx="1.5" />
+                                    <rect x="42" y="24" width="8" height="28" fill="none"
+                                        stroke="var(--color-primary-dark)" stroke-width="2.5" rx="1.5" />
+                                    <path d="M12 26l10 6 9-8 11 6 10-12" stroke="var(--color-brand-light)"
+                                        stroke-width="2.5" />
+                                </g>
+                            </svg>
                         </div>
-                        <div class="service-card__body">
-                            <h3 class="service-card__title">Evaluación Integral</h3>
-                            <p>Psicometría, competencias, soft skills y potencial.</p>
-                            <ul class="about__bullets">
-                                <li>Baterías psicométricas</li>
-                                <li>Assessment por competencias</li>
-                                <li>Reporte ejecutivo</li>
-                            </ul>
-                            <a href="/index.html#contacto" class="service-card__cta">Evaluar ahora →</a>
-                        </div>
+                        <h3 class="feature__title">Asesoría y evaluaciones de talento estratégico</h3>
+                        <p class="feature__text">
+                            ¿No sabes si ascender a alguien te va a dar resultados esperados? ¿Buscas que tu personal se
+                            convierta en talento y te haga crecer? ¿Buscas mejorar tu calidad de talentos que tienes? Te
+                            ayudamos con asesorías y evaluaciones a tu talento actual para generar estrategias con base…
+                        </p>
                     </article>
 
-                    <article class="service-card service-card--accent">
-                        <div class="service-card__media">
-                            <img src="assets/servicios/procesos.jpg" alt="Optimización de procesos" loading="lazy">
-                            <span class="service-card__icon">⚙️</span>
+                    <!-- Item 3 -->
+                    <article class="feature">
+                        <div class="feature__media" aria-hidden="true">
+                            <!-- Icono inline: grupo de personas -->
+                            <svg class="feature__icon" viewBox="0 0 64 64" width="128" height="128"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5">
+                                    <circle cx="32" cy="22" r="6.5" stroke="var(--color-brand-light)" />
+                                    <path d="M20 44c0-6.5 5.5-12 12-12s12 5.5 12 12"
+                                        stroke="var(--color-primary-dark)" />
+                                    <circle cx="18" cy="24" r="5.5" stroke="var(--color-primary-mid)" />
+                                    <circle cx="46" cy="24" r="5.5" stroke="var(--color-primary-mid)" />
+                                    <path d="M10 44c0-5.5 4.5-10 10-10" stroke="var(--color-primary-mid)" />
+                                    <path d="M54 44c0-5.5-4.5-10-10-10" stroke="var(--color-primary-mid)" />
+                                </g>
+                            </svg>
                         </div>
-                        <div class="service-card__body">
-                            <h3 class="service-card__title">Optimización Procesos RH</h3>
-                            <p>Flujos rediseñados para escalabilidad y reducción de fricción.</p>
-                            <ul class="about__bullets">
-                                <li>Funnel diagnóstico</li>
-                                <li>Automatización básica</li>
-                                <li>KPIs operativos</li>
-                            </ul>
-                            <a href="/index.html#contacto" class="btn btn--dark">Saber más</a>
-                        </div>
-                    </article>
-
-                    <article class="service-card">
-                        <div class="service-card__media">
-                            <img src="assets/servicios/onboarding.jpg" alt="Onboarding" loading="lazy">
-                            <span class="service-card__icon">🚀</span>
-                        </div>
-                        <div class="service-card__body">
-                            <h3 class="service-card__title">Onboarding Efectivo</h3>
-                            <p>Rampa productiva acelerada y retención temprana optimizada.</p>
-                            <ul class="about__bullets">
-                                <li>Playbooks por rol</li>
-                                <li>Checkpoints de inmersión</li>
-                                <li>Métricas de adaptación</li>
-                            </ul>
-                            <a href="/index.html#contacto" class="service-card__cta">Mejorar onboarding →</a>
-                        </div>
-                    </article>
-
-                    <article class="service-card">
-                        <div class="service-card__media">
-                            <img src="assets/servicios/payroll.jpg" alt="Gestión de nómina" loading="lazy">
-                            <span class="service-card__icon">💼</span>
-                        </div>
-                        <div class="service-card__body">
-                            <h3 class="service-card__title">Gestión de Nómina</h3>
-                            <p>Administración confiable y cumplimiento normativo continuo.</p>
-                            <ul class="about__bullets">
-                                <li>Altas y bajas</li>
-                                <li>Cumplimiento fiscal y laboral</li>
-                                <li>Reportes periódicos</li>
-                            </ul>
-                            <a href="/index.html#contacto" class="service-card__cta">Automatizar →</a>
-                        </div>
-                    </article>
-
-                    <article class="service-card">
-                        <div class="service-card__media">
-                            <img src="assets/servicios/expansion.jpg" alt="Expansión legal" loading="lazy">
-                            <span class="service-card__icon">🌎</span>
-                        </div>
-                        <div class="service-card__body">
-                            <h3 class="service-card__title">Expansión Legal</h3>
-                            <p>Operaciones y cumplimiento laboral para empresas que aterrizan en México.</p>
-                            <ul class="about__bullets">
-                                <li>Entidad y estructura</li>
-                                <li>Contratos y compliance</li>
-                                <li>Handbook local</li>
-                            </ul>
-                            <a href="/index.html#contacto" class="service-card__cta">Iniciar expansión →</a>
-                        </div>
+                        <h3 class="feature__title">Reclutamiento masivo de personal</h3>
+                        <p class="feature__text">
+                            ¿Necesitas contratar operativos por expansión o mes con mes? Te hacemos un plan hecho a la
+                            medida para que tus posiciones estén en operación ¡Nosotros te ayudamos!
+                        </p>
                     </article>
                 </div>
             </div>

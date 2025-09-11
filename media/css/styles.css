@@ -2,19 +2,19 @@
   /* Paleta base (colores del logo: negro, grises y blanco) */
   --color-brand-dark: #000000;       /* Fondo negro del logo */
   --color-brand-darker: #0A0A0A;     /* Profundización para secciones */
-  --color-brand-light: #D9D9D9;      /* Gris claro del texto del logo */
+  --color-brand-light: #C2C2C2;      /* Gris claro del texto del logo (ajustado) */
 
   /* Derivaciones (tints/shades en la misma familia neutra) */
-  --color-primary-lighter: #F2F2F2;  /* Casi blanco para highlights */
-  --color-primary: #D9D9D9;          /* Gris claro principal */
-  --color-primary-mid: #9C9C9C;      /* Gris medio (segmento del isotipo) */
-  --color-primary-dark: #6E6E6E;     /* Gris más oscuro para hover/énfasis */
+  --color-primary-lighter: #EDEDED;  /* Casi blanco para highlights (ajustado) */
+  --color-primary: #C2C2C2;          /* Gris claro principal = texto del logo (ajustado) */
+  --color-primary-mid: #AFAFAF;      /* Gris medio de transición (ajustado) */
+  --color-primary-dark: #6E6E6E;     /* Gris oscuro del isotipo (hover/énfasis) */
 
   /* Alias para compatibilidad previa */
-  --color-primary-rgb: 217,217,217;
+  --color-primary-rgb: 194,194,194;  /* RGB del gris del logo (ajustado) */
 
   /* Texto y fondos (modo oscuro coherente con el logo) */
-  --color-text: #D6D6D6;             /* Texto primario sobre fondo oscuro */
+  --color-text: #D3D3D3;             /* Un punto más claro para mejor contraste (ajustado) */
   --color-muted: #9A9A9A;            /* Texto secundario */
   --color-bg: #0A0A0A;               /* Fondo base (negro suave) */
   --color-bg-alt: #141414;           /* Paneles / tarjetas */
@@ -1038,4 +1038,231 @@ a:hover { color: var(--color-primary-lighter); }
   .footer-contact {
     justify-content: center;
   }
+}
+/* ========== TEMA CLARO GLOBAL (resto del sitio) ========== */
+:root {
+  --color-text: #1F2937;
+  --color-muted: #6B7280;
+  --color-bg: #F8FAFC;
+  --color-bg-alt: #FFFFFF;
+  --color-border: #E5E7EB;
+
+  /* Acentos neutros que no rompen con el logo */
+  --color-primary: #334155;
+  --color-primary-mid: #475569;
+  --color-primary-dark: #0F172A;
+  --color-primary-lighter: #111827;
+
+  --color-heading: #111827;
+}
+
+body { background: var(--color-bg); color: var(--color-text); }
+
+/* Títulos en claro */
+.section__title,
+.service-card__title,
+.clients__subtitle { color: var(--color-heading); }
+
+.service-card {
+  background: var(--color-bg-alt);
+  border-color: var(--color-border);
+}
+
+/* ========== ZONAS OSCURAS (solo header, footer, contacto) ========== */
+.site-header,
+.footer,
+.site-footer,
+.contact-section {
+  --color-text: #D3D3D3;
+  --color-muted: #9A9A9A;
+  --color-bg: #0A0A0A;
+  --color-bg-alt: #141414;
+  --color-border: #2A2A2A;
+
+  --color-primary-lighter: #EDEDED;
+  --color-primary: #C2C2C2;
+  --color-primary-mid: #AFAFAF;
+  --color-primary-dark: #6E6E6E;
+
+  --color-primary-rgb: 194,194,194;
+  --color-heading: var(--color-brand-light);
+}
+
+/* Utilidades de contexto para contenido embebido (como logos dentro de secciones) */
+.on-dark {
+  --color-text: #D3D3D3;
+  --color-muted: #9A9A9A;
+  --color-bg: #0A0A0A;
+  --color-bg-alt: #141414;
+  --color-border: #2A2A2A;
+
+  --color-primary-lighter: #EDEDED;
+  --color-primary: #C2C2C2;
+  --color-primary-mid: #AFAFAF;
+  --color-primary-dark: #6E6E6E;
+  --color-primary-rgb: 194,194,194;
+  --color-heading: var(--color-brand-light);
+}
+
+.on-light {
+  --color-text: #1F2937;
+  --color-muted: #6B7280;
+  --color-bg: #F8FAFC;
+  --color-bg-alt: #FFFFFF;
+  --color-border: #E5E7EB;
+
+  --color-primary: #334155;
+  --color-primary-mid: #475569;
+  --color-primary-dark: #0F172A;
+  --color-primary-lighter: #111827;
+  --color-heading: #111827;
+}
+
+/* Swap de logo por contexto (dos <img>, uno por variante) */
+.brand__logo { height: 60px; width: auto; display: block; }
+.logo--darkbg { display: inline-block; }  /* claro sobre fondo oscuro */
+.logo--lightbg { display: none; }         /* oscuro sobre fondo claro */
+
+/* En contenedores claros, mostramos la variante para fondo claro */
+.on-light .logo--darkbg { display: none; }
+.on-light .logo--lightbg { display: inline-block; }
+
+/* Header/footer/contacto ya son oscuros: aseguran la variante darkbg */
+.site-header .logo--darkbg,
+.footer .logo--darkbg,
+.site-footer .logo--darkbg,
+.contact-section .logo--darkbg { display: inline-block; }
+.site-header .logo--lightbg,
+.footer .logo--lightbg,
+.site-footer .logo--lightbg,
+.contact-section .logo--lightbg { display: none; }
+
+/* Hero más luminoso (opcional) */
+.hero__overlay--brand {
+  background: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.12), rgba(0,0,0,.28));
+}
+.testimonials__viewport {
+  position: relative;
+  background:
+    radial-gradient(1200px 60% at 15% 10%, rgba(0,0,0,.06), transparent 60%),
+    var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: clamp(1.2rem, 3vw, 2rem) clamp(1rem, 3vw, 2rem) clamp(3.2rem, 6vw, 4rem);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Track: solo muestra el activo (simple y accesible) con fade */
+.testimonials__track {
+  list-style: none;
+  margin: 0; padding: 0;
+}
+.testimonial { display: none; opacity: 0; transform: translateY(4px); transition: opacity .4s, transform .4s; }
+.testimonial.is-active { display: block; opacity: 1; transform: translateY(0); }
+
+/* Header mejorado */
+.testimonial__header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+.testimonial__brand {
+  width: 64px; height: 64px; border-radius: 12px;
+  display: grid; place-items: center; overflow: hidden;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+}
+.testimonial__brand img { width: 100%; height: 100%; object-fit: contain; }
+
+.testimonial__meta {
+  display: grid; grid-auto-flow: column; align-items: center; gap: .8rem; justify-content: start;
+}
+.testimonial__avatar {
+  width: 56px; height: 56px; border-radius: 999px; object-fit: cover;
+  box-shadow: 0 0 0 3px var(--color-bg-alt), 0 0 0 4px var(--color-border);
+}
+.testimonial__identity { display: grid; gap: .15rem; }
+.testimonial__name {
+  font-weight: 700;
+  color: var(--color-brand-light);
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+}
+.testimonial__role { font-size: .95rem; }
+
+/* Cuerpo */
+.testimonial__quote {
+  color: var(--color-muted);
+  font-size: clamp(1rem, 1.2vw, 1.05rem);
+  line-height: 1.9;
+  max-width: 92ch;
+}
+.testimonial__quote p { margin: 0 0 .9rem; }
+
+/* Comillas decorativas */
+.testimonial__quote-mark {
+  position: absolute;
+  right: clamp(.5rem, 2vw, 1rem);
+  bottom: clamp(.4rem, 2vw, .8rem);
+  color: var(--color-border);
+  opacity: .9;
+  z-index: 0;
+}
+.testimonial__quote-mark svg { width: 54px; height: 54px; }
+
+/* Barra de progreso */
+.testimonials__progress {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 4px;
+  background: rgba(0,0,0,.06);
+  overflow: hidden;
+}
+.testimonials__progress-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary-dark), var(--color-primary));
+  transition: width .15s linear;
+}
+
+/* Controles */
+.testimonials__controls {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.1rem;
+}
+.tnav {
+  justify-self: end;
+  width: 42px; height: 42px;
+  display: inline-grid; place-items: center;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-alt);
+  color: var(--color-brand-light);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), background var(--transition), border-color var(--transition);
+}
+.tnav--next { justify-self: start; }
+.tnav:hover { transform: translateY(-2px); border-color: var(--color-primary-mid); }
+.tnav svg { width: 22px; height: 22px; }
+
+.testimonials__pagination {
+  justify-self: center;
+  font-weight: 700;
+  color: var(--color-brand-light);
+}
+.testimonials__pagination .sep { margin: 0 .25rem; color: var(--color-muted); }
+.testimonials__pagination .total { color: var(--color-muted); }
+
+/* Responsive */
+@media (max-width: 620px) {
+  .testimonial__header { grid-template-columns: 52px 1fr; }
+  .testimonial__brand { width: 52px; height: 52px; border-radius: 10px; }
+  .testimonial__avatar { width: 48px; height: 48px; }
+  .testimonials__controls { grid-template-columns: auto 1fr auto; }
 }

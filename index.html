@@ -103,14 +103,143 @@
     <!-- Puedes agregar aquí una sección breve de valor / CTA si quieres cubrir el hueco -->
     <section class="section" aria-labelledby="ctaMiniTitle">
       <div class="container">
-        <h2 class="section__title" id="ctaMiniTitle">Talento <span class="highlight">Validado</span></h2>
+        <h2 class="section__title" id="ctaMiniTitle"><span class="highlight">Creemos que cualquiera puede reclutar
+            personal, pero no todos saben contratar talento</span></h2>
         <p style="max-width:720px;margin:0 auto 2.2rem;text-align:center">
-          Reducimos tiempos de contratación, mejoramos retención temprana y ayudamos a estructurar tu
-          escalabilidad humana con procesos medibles.
-        </p>
+          Nos consideramos especialistas en contratar las y los talentos que necesita tu empresa para crecer. Cada día
+          buscamos ser partner de las empresas y tecnologías que nuestros clientes necesitan. </p>
         <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center">
           <a href="/nosotros.html" class="btn btn--dark">Conoce nuestra metodología</a>
           <a href="/servicios.html" class="btn">Soluciones para tu empresa</a>
+        </div>
+      </div>
+    </section>
+    <section id="testimonios" class="section testimonials" aria-labelledby="testimonios-title">
+      <div class="container">
+        <h2 id="testimonios-title" class="section__title">Testimonios</h2>
+
+        <!-- Viewport -->
+        <div class="testimonials__viewport" aria-live="polite">
+          <ul class="testimonials__track">
+            <!-- Testimonio 1 (texto literal de tu captura) -->
+            <li class="testimonial is-active">
+              <header class="testimonial__header">
+                <div class="testimonial__brand">
+                  <!-- Logo empresa (opcional) -->
+                  <img src="/img/testimonials/neustrat-logo.png" alt="Neustrat" loading="lazy" width="64" height="64">
+                </div>
+
+                <div class="testimonial__meta">
+                  <img class="testimonial__avatar" src="/img/testimonials/cynthia-gamboa.jpg"
+                    alt="Foto de Cynthia Gamboa" loading="lazy" width="56" height="56">
+                  <div class="testimonial__identity">
+                    <div class="testimonial__name">Cynthia Gamboa</div>
+                    <div class="testimonial__role u-muted">Director de Marketing en Neustrat</div>
+                  </div>
+                </div>
+              </header>
+
+              <blockquote class="testimonial__quote">
+                <p>
+                  Muchas gracias a todo el equipo, ha sido un verdadero gusto poder hacer sinergia y trabajar en
+                  conjunto.
+                  En un inicio nos ayudaron con un estudio y realizar un perfil de nuestra empresa para posteriormente
+                  reclutar a
+                  nuestro personal en base a las necesidades que teníamos en ese momento.
+                </p>
+                <p>
+                  De igual manera nos apoyaron otorgando capacitaciones en diversas áreas y ayudándonos en todo momento
+                  con tips
+                  y seguimiento con el personal contratado.
+                </p>
+                <p>
+                  Totalmente recomendados… ¡Muchas felicidades! y que sigan con ese espíritu de generar ese click entre
+                  empleadores y colaboradores. Gracias.
+                </p>
+              </blockquote>
+            </li>
+
+            <!-- Testimonio 2 (ejemplo editable) -->
+            <li class="testimonial">
+              <header class="testimonial__header">
+                <div class="testimonial__brand">
+                  <img src="/img/testimonials/acme-logo.png" alt="ACME" loading="lazy" width="64" height="64">
+                </div>
+                <div class="testimonial__meta">
+                  <img class="testimonial__avatar" src="/img/testimonials/maria-lopez.jpg" alt="Foto de María López"
+                    loading="lazy" width="56" height="56">
+                  <div class="testimonial__identity">
+                    <div class="testimonial__name">María López</div>
+                    <div class="testimonial__role u-muted">Head of People, ACME</div>
+                  </div>
+                </div>
+              </header>
+              <blockquote class="testimonial__quote">
+                <p>
+                  Su proceso nos permitió reducir tiempos de contratación y elevar la retención en onboarding.
+                  Comunicación clara y resultados medibles.
+                </p>
+              </blockquote>
+            </li>
+
+            <!-- Testimonio 3 (ejemplo editable) -->
+            <li class="testimonial">
+              <header class="testimonial__header">
+                <div class="testimonial__brand">
+                  <img src="/img/testimonials/fabrila-logo.png" alt="Fabrila" loading="lazy" width="64" height="64">
+                </div>
+                <div class="testimonial__meta">
+                  <img class="testimonial__avatar" src="/img/testimonials/jorge-perez.jpg" alt="Foto de Jorge Pérez"
+                    loading="lazy" width="56" height="56">
+                  <div class="testimonial__identity">
+                    <div class="testimonial__name">Jorge Pérez</div>
+                    <div class="testimonial__role u-muted">COO, Fabrila</div>
+                  </div>
+                </div>
+              </header>
+              <blockquote class="testimonial__quote">
+                <p>
+                  Encontraron talento operativo a volumen sin perder calidad. La operación no se detuvo y mejoraron
+                  nuestros KPIs de tiempo de cobertura.
+                </p>
+              </blockquote>
+            </li>
+          </ul>
+
+          <!-- Comillas decorativas -->
+          <div class="testimonial__quote-mark" aria-hidden="true">
+            <svg viewBox="0 0 64 64">
+              <path
+                d="M26 22c0-6.6 5.4-12 12-12h6v6h-6c-3.3 0-6 2.7-6 6v8h12v18H26V22zm-20 0C6 15.4 11.4 10 18 10h6v6h-6c-3.3 0-6 2.7-6 6v8h12v18H6V22z"
+                fill="currentColor" />
+            </svg>
+          </div>
+
+          <!-- Barra de progreso del auto-advance -->
+          <div class="testimonials__progress" aria-hidden="true">
+            <div class="testimonials__progress-fill"></div>
+          </div>
+        </div>
+
+        <!-- Controles -->
+        <div class="testimonials__controls">
+          <button class="tnav tnav--prev" aria-label="Testimonio anterior">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" />
+            </svg>
+          </button>
+
+          <div class="testimonials__pagination" aria-live="polite" aria-atomic="true">
+            <span class="current">1</span>
+            <span class="sep">/</span>
+            <span class="total">3</span>
+          </div>
+
+          <button class="tnav tnav--next" aria-label="Siguiente testimonio">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" />
+            </svg>
+          </button>
         </div>
       </div>
     </section>
@@ -118,27 +247,26 @@
     <!-- CLIENTES -->
     <section class="clients section" id="clientes" aria-labelledby="clientesTitle">
       <div class="container">
-        <h2 class="section__title" id="clientesTitle">Algunas <span class="highlight">Marcas</span></h2>
+        <h2 class="section__title" id="clientesTitle">Quiénes confían en <span class="highlight">nosotros</span></h2>
         <ul class="clients__grid" role="list">
-          <li class="client"><img src="media/images/empresas/google.png" alt="Cliente 1" loading="lazy" width="120"
-              height="60"></li>
-          <li class="client"><img src="media/images/empresas/arc.png" alt="Cliente 2" loading="lazy" width="120"
-              height="60"></li>
-          <li class="client client--featured"><img src="media/images/empresas/help.png" alt="Cliente 3 destacado"
+          <li class="client"><img src="media/images/empresas_final/amederi.jpg" alt="Cliente 1" loading="lazy"
+              width="120" height="60"></li>
+          <li class="client"><img src="media/images/empresas_final/Baspul.jpg" alt="Cliente 2" loading="lazy"
+              width="120" height="60"></li>
+          <li class="client client--featured"><img src="media/images/empresas_final/bazar.png" alt="Cliente 3 destacado"
               loading="lazy" width="120" height="60"></li>
-          <li class="client"><img src="media/images/empresas/urban.png" alt="Cliente 4" loading="lazy" width="120"
-              height="60"></li>
-          <li class="client"><img src="media/images/empresas/blablacar.png" alt="Cliente 5" loading="lazy" width="120"
-              height="60"></li>
+          <li class="client"><img src="media/images/empresas_final/cannto.png" alt="Cliente 4" loading="lazy"
+              width="120" height="60"></li>
+          <li class="client"><img src="media/images/empresas_final/growxagency_logo.jpeg" alt="Cliente 5" loading="lazy"
+              width="120" height="60"></li>
+          <li class="client"><img src="media/images/empresas_final/itineraria.jpg" alt="Cliente 5" loading="lazy"
+              width="120" height="60"></li>
+          <li class="client"><img src="media/images/empresas_final/merida-soft.png" alt="Cliente 5" loading="lazy"
+              width="120" height="60"></li>
+          <li class="client"><img src="media/images/empresas_final/todo_mkt.jpg" alt="Cliente 5" loading="lazy"
+              width="120" height="60"></li>
         </ul>
 
-        <h3 class="clients__subtitle">Próximos <span class="highlight">Clientes</span></h3>
-        <ul class="clients__grid clients__grid--faded" role="list" aria-label="Logotipos futuros">
-          <li class="client"><img src="media/images/empresas/prueba.png" alt="Próximo cliente 1" loading="lazy"
-              width="120" height="60"></li>
-          <li class="client"><img src="media/images/empresas/oracle.png" alt="Próximo cliente 2" loading="lazy"
-              width="120" height="60"></li>
-        </ul>
       </div>
     </section>
     <section id="contacto" class="contact-section" aria-labelledby="contacto-title">
@@ -152,7 +280,7 @@
             </p>
 
             <ul class="contact-info">
-              <li><a href="mailto:hola@talentscode.com" rel="noopener">hola@talentscode.com</a></li>
+              <li><a href="mailto:hello@talentscode.com" rel="noopener">hello@talentscode.com</a></li>
               <li><a href="tel:+000000000" rel="noopener">+00 000 000</a></li>
               <li><a href="https://wa.me/0000000000" target="_blank" rel="noopener">WhatsApp directo</a></li>
             </ul>
@@ -222,7 +350,7 @@
 
       <!-- CENTRO: Correo + Derechos -->
       <div class="site-footer__center">
-        <a href="mailto:contacto@talentscode.com" class="footer-email">contacto@talentscode.com</a>
+        <a href="mailto:hello@talentscode.com" class="footer-email">hello@talentscode.com</a>
         <span class="footer-divider" aria-hidden="true">•</span>
         <small class="footer-copy">&copy; <span id="year"></span> Talents Code. Todos los derechos reservados.</small>
       </div>
