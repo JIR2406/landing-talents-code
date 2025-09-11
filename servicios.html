@@ -258,30 +258,55 @@
                 <a href="/index.html#contacto" class="btn btn--primary">Solicitar propuesta</a>
             </div>
         </section>
-        
+
     </main>
 
-    <footer class="footer" id="contacto">
-        <div class="container footer__grid">
-            <div class="footer__col">
-                <h4 class="footer__title">Contacto</h4>
-                <ul class="footer__list">
-                    <li><strong>Email:</strong> <a href="mailto:contacto@talentscode.com">contacto@talentscode.com</a>
+
+    <footer class="site-footer" aria-label="Información legal y redes">
+        <div class="container site-footer__inner">
+
+            <!-- IZQUIERDA: Número de contacto -->
+            <div class="site-footer__left">
+                <div class="footer-contact" aria-label="Teléfonos de contacto">
+                    <a href="tel:+529990000000" class="footer-phone" aria-label="Llamar a Talents Code">
+                        <span class="footer-phone__label">Tel:</span> +52 (999) 000 0000
+                    </a>
+                    <br>
+                </div>
+            </div>
+
+            <!-- CENTRO: Correo + Derechos -->
+            <div class="site-footer__center">
+                <a href="mailto:contacto@talentscode.com" class="footer-email">contacto@talentscode.com</a>
+                <span class="footer-divider" aria-hidden="true">•</span>
+                <small class="footer-copy">&copy; <span id="year"></span> Talents Code. Todos los derechos
+                    reservados.</small>
+            </div>
+
+            <!-- DERECHA: Redes -->
+            <div class="site-footer__right">
+                <ul class="social-links" role="list" aria-label="Redes sociales">
+                    <li>
+                        <a href="https://www.linkedin.com/company/talents-code/" target="_blank" rel="noopener"
+                            aria-label="LinkedIn">
+                            <img src="media/images/icons/linkedin.png" alt="" width="28" height="28" class="icon">
+                        </a>
                     </li>
-                    <li><strong>Tel:</strong> <a href="tel:+529990000000">+52 (999) 000 0000</a></li>
+                    <li>
+                        <a href="https://www.facebook.com/talentscode" target="_blank" rel="noopener"
+                            aria-label="Facebook">
+                            <img src="media/images/icons/facebook.png" alt="" width="28" height="28" class="icon">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/talentscode" target="_blank" rel="noopener"
+                            aria-label="X / Twitter">
+                            <img src="media/images/icons/x.png" alt="" width="28" height="28" class="icon">
+                        </a>
+                    </li>
                 </ul>
             </div>
-            <div class="footer__col">
-                <h4 class="footer__title">¿Dudas?</h4>
-                <p>Podemos ayudarte a priorizar antes de comprometer recursos.</p>
-            </div>
-            <div class="footer__col">
-                <h4 class="footer__title">Acción</h4>
-                <a href="/index.html#contacto" class="btn btn--primary">Hablar con nosotros</a>
-            </div>
-        </div>
-        <div class="footer__bottom">
-            <p>&copy; <span id="year"></span> Talents Code</p>
+
         </div>
     </footer>
 
