@@ -41,6 +41,7 @@
     "description":"Reclutamiento especializado, evaluación, onboarding y soluciones de expansión legal."
   }
   </script>
+
 </head>
 
 <body>
@@ -61,7 +62,8 @@
           <li><a href="https://jgarduno.me/landing-talents-code" data-link="home">Inicio</a></li>
           <li><a href="https://jgarduno.me/landing-talents-code/nosotros" data-link="nosotros">Conócenos</a></li>
           <li><a href="https://jgarduno.me/landing-talents-code/servicios" data-link="servicios">Servicios</a></li>
-          <li><a href="https://jgarduno.me/landing-talents-code#contacto" class="btn btn--sm btn--outline" data-link="contacto">Contacto</a></li>
+          <li><a href="https://jgarduno.me/landing-talents-code#contacto" class="btn btn--sm btn--outline"
+              data-link="contacto">Contacto</a></li>
         </ul>
       </nav>
     </div>
@@ -73,7 +75,7 @@
       <div class="hero__media" aria-hidden="true">
 
         <video class="hero__video" autoplay muted loop playsinline preload="auto" poster="media/images/meeting.png">
-          <source src="media/video/meeting.mp4" type="video/mp4">
+          <source src="media/video/meeting1.mp4" type="video/mp4">
           <!-- Fallback: si no soporta video verá el poster -->
         </video>
       </div>
@@ -100,20 +102,23 @@
       </div>
     </section>
 
-    <!-- Puedes agregar aquí una sección breve de valor / CTA si quieres cubrir el hueco -->
-    <section class="section" aria-labelledby="ctaMiniTitle">
+    <section class="section section--brand-cta" aria-labelledby="ctaMiniTitle">
       <div class="container">
-        <h2 class="section__title" id="ctaMiniTitle"><span class="highlight">Creemos que cualquiera puede reclutar
-            personal, pero no todos saben contratar talento</span></h2>
-        <p style="max-width:720px;margin:0 auto 2.2rem;text-align:center">
+        <h2 class="section__title" id="ctaMiniTitle">
+          <span class="highlight">Creemos que cualquiera puede reclutar personal, pero no todos saben contratar
+            talento</span>
+        </h2>
+        <p class="section__lead">
           Nos consideramos especialistas en contratar las y los talentos que necesita tu empresa para crecer. Cada día
-          buscamos ser partner de las empresas y tecnologías que nuestros clientes necesitan. </p>
-        <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center">
-          <a href="/nosotros.html" class="btn btn--dark">Conoce nuestra metodología</a>
-          <a href="/servicios.html" class="btn">Soluciones para tu empresa</a>
+          buscamos ser partner de las empresas y tecnologías que nuestros clientes necesitan.
+        </p>
+        <div class="section__actions">
+          <a href="/nosotros.html" class="btn btn--primary">Conoce nuestra metodología</a>
+          <a href="/servicios.html" class="btn btn--ghost">Soluciones para tu empresa</a>
         </div>
       </div>
     </section>
+
     <section id="testimonios" class="section testimonials" aria-labelledby="testimonios-title">
       <div class="container">
         <h2 id="testimonios-title" class="section__title">Testimonios</h2>
@@ -170,8 +175,8 @@
             <li class="testimonial" aria-label="Testimonio 3">
               <header class="testimonial__header">
                 <div class="testimonial__meta">
-                  <img class="testimonial__avatar" src="media/images/clientes/Affenbits-150x150.webp" alt="Foto de Jorge Pérez" loading="lazy" width="64"
-                    height="64">
+                  <img class="testimonial__avatar" src="media/images/clientes/Affenbits-150x150.webp"
+                    alt="Foto de Jorge Pérez" loading="lazy" width="64" height="64">
                   <div class="testimonial__identity">
                     <div class="testimonial__name">Jorge Hernández</div>
                     <div class="testimonial__role u-muted">Director de Affenbits</div>
@@ -227,26 +232,28 @@
     <!-- CLIENTES -->
     <section class="clients section" id="clientes" aria-labelledby="clientesTitle">
       <div class="container">
-        <h2 class="section__title" id="clientesTitle">Quiénes confían en <span class="highlight">nosotros</span></h2>
+        <h2 class="section__title" id="clientesTitle">
+          Quiénes confían en <span class="highlight">nosotros</span>
+        </h2>
+        <br><br><br>
         <ul class="clients__grid" role="list">
           <li class="client"><img src="media/images/empresas_final/amederi.jpg" alt="Cliente 1" loading="lazy"
               width="120" height="60"></li>
           <li class="client"><img src="media/images/empresas_final/Baspul.jpg" alt="Cliente 2" loading="lazy"
               width="120" height="60"></li>
-          <li class="client client--featured"><img src="media/images/empresas_final/bazar.png" alt="Cliente 3 destacado"
-              loading="lazy" width="120" height="60"></li>
+          <li class="client"><img src="media/images/empresas_final/bazar.png" alt="Cliente 3" loading="lazy" width="120"
+              height="60"></li>
           <li class="client"><img src="media/images/empresas_final/cannto.png" alt="Cliente 4" loading="lazy"
               width="120" height="60"></li>
           <li class="client"><img src="media/images/empresas_final/growxagency_logo.jpeg" alt="Cliente 5" loading="lazy"
               width="120" height="60"></li>
-          <li class="client"><img src="media/images/empresas_final/itineraria.jpg" alt="Cliente 5" loading="lazy"
+          <li class="client"><img src="media/images/empresas_final/itineraria.jpg" alt="Cliente 6" loading="lazy"
               width="120" height="60"></li>
-          <li class="client"><img src="media/images/empresas_final/merida-soft.png" alt="Cliente 5" loading="lazy"
+          <li class="client"><img src="media/images/empresas_final/merida-soft.png" alt="Cliente 7" loading="lazy"
               width="120" height="60"></li>
-          <li class="client"><img src="media/images/empresas_final/todo_mkt.jpg" alt="Cliente 5" loading="lazy"
+          <li class="client"><img src="media/images/empresas_final/todo_mkt.jpg" alt="Cliente 8" loading="lazy"
               width="120" height="60"></li>
         </ul>
-
       </div>
     </section>
     <section id="contacto" class="contact-section" aria-labelledby="contacto-title">
@@ -254,23 +261,22 @@
         <div class="contact-section__grid">
           <!-- Columna: información -->
           <div class="contact-section__col">
-            <h2 id="contacto-title" class="section__title">Hablemos</h2>
+            <h2 id="contacto-title" class="section__title" style="color:#ffffff; -webkit-text-fill-color:#ffffff;">
+              Hablemos
+            </h2>
             <p class="contact-section__intro">
               Cuéntanos brevemente tu proyecto o necesidad y te responderemos en menos de 24 horas.
             </p>
-
             <ul class="contact-info">
-              <li><a href="mailto:hello@talentscode.com" rel="noopener">hello@talentscode.com</a></li>
-              <li><a href="tel:+000000000" rel="noopener">+00 000 000</a></li>
-              <li><a href="https://wa.me/0000000000" target="_blank" rel="noopener">WhatsApp directo</a></li>
+              <li><a href="mailto:hello@talentscode.com.mx" rel="noopener">hello@talentscode.com.mx</a></li>
+              <li><a href="tel:+525586346704" rel="noopener">+52 558 634 6704</a></li>
+              <li><a href="https://wa.me/5586346704" target="_blank" rel="noopener">WhatsApp directo</a></li>
             </ul>
-
             <p class="contact-location">Remoto y presencial. Horario: 9:00–18:00 (GMT-3).</p>
           </div>
 
-          <!-- Columna: formulario (Formspree) -->
+          <!-- Columna: formulario -->
           <div class="contact-section__col contact-section__col--form">
-            <!-- Quité novalidate para usar validación nativa del navegador -->
             <form class="contact-form" method="POST" action="https://formspree.io/f/xwpnyzob">
               <h3 class="contact-form__title">Envíanos un mensaje</h3>
 
@@ -295,16 +301,14 @@
                   placeholder="Cuéntanos en breve tu necesidad"></textarea>
               </div>
 
-              <!-- Honeypot antispam (no debe ser required) -->
+              <!-- Honeypot antispam -->
               <div class="u-hidden" aria-hidden="true">
                 <label for="website">No completar</label>
                 <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
               </div>
 
-              <!-- Opcional: asunto del email que recibirás -->
               <input type="hidden" name="_subject" value="Talents Code · Nuevo contacto desde la landing" />
 
-              <!-- Estado accesible -->
               <p class="form-disclaimer" id="form-status" role="status" aria-live="polite"></p>
 
               <button class="btn btn--primary btn--full" type="submit">Enviar mensaje</button>
@@ -321,8 +325,8 @@
       <!-- IZQUIERDA: Número de contacto -->
       <div class="site-footer__left">
         <div class="footer-contact" aria-label="Teléfonos de contacto">
-          <a href="tel:+529990000000" class="footer-phone" aria-label="Llamar a Talents Code">
-            <span class="footer-phone__label">Tel:</span> +52 (999) 000 0000
+          <a href="tel:+525586346704" class="footer-phone" aria-label="Llamar a Talents Code">
+            <span class="footer-phone__label">Tel:</span> +52 558 634 6704
           </a>
           <br>
         </div>
@@ -330,7 +334,7 @@
 
       <!-- CENTRO: Correo + Derechos -->
       <div class="site-footer__center">
-        <a href="mailto:contacto@talentscode.com" class="footer-email">hello@talentscode.com</a>
+        <a href="mailto:contacto@talentscode.com.mx" class="footer-email">hello@talentscode.com.mx</a>
         <span class="footer-divider" aria-hidden="true">•</span>
         <small class="footer-copy">&copy; <span id="year"></span> Talents Code. Todos los derechos reservados.</small>
       </div>

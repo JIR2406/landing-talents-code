@@ -41,6 +41,418 @@
     "description":"Reclutamiento especializado, evaluación, onboarding y soluciones de expansión legal."
   }
   </script>
+    <style>
+        /* Neutral card + dark/gray icon options */
+
+        /* Card neutral background (no bright gradient) */
+        .about__media--neutral {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 520px;
+            margin-left: auto;
+            margin-right: auto;
+            background: var(--card-bg, #ffffff);
+            border-radius: 14px;
+            padding: clamp(.75rem, 2.5vw, 1.25rem);
+            border: 1px solid var(--card-border, rgba(0, 0, 0, 0.06));
+            box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
+            transition: transform .18s ease, box-shadow .18s ease;
+        }
+
+        /* Base SVG sizing */
+        .about__avatar {
+            width: min(360px, 72%);
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        /* Opción 1: icono negro (preferencia: negro) */
+        .about__avatar--dark {
+            color: #0b0b0b;
+        }
+
+        /* Opción 2: icono gris (preferencia: gris) */
+        .about__avatar--gray {
+            color: #6b7280;
+        }
+
+        /* gray-500 */
+
+        /* Si quieres forzar inline, puedes usar style="color:#6b7280" en el SVG */
+
+        /* Hover y foco */
+        .about__media--neutral:hover,
+        .about__media--neutral:focus-within {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 36px rgba(15, 23, 42, 0.07);
+        }
+
+        /* Responsive tweaks */
+        @media (max-width: 720px) {
+            .about__media--neutral {
+                max-width: 360px;
+                padding: .75rem;
+            }
+
+            .about__avatar {
+                width: min(260px, 72%);
+            }
+        }
+
+        /* Sección blanca y ajustes para el bloque "Quiénes Somos" */
+        .section--white {
+            background: #ffffff;
+            color: #0b0b0b;
+        }
+
+        /* Asegurar que los textos secundarios mantengan jerarquía y contraste */
+        .section--white .u-muted {
+            color: #6b7280;
+        }
+
+        /* gray-500 */
+        .section--white .highlight {
+            color: var(--color-primary, #1f8ef1);
+        }
+
+        /* Tarjeta neutra para el icono */
+        .about__media--card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+            /* tarjeta blanca para armonizar con la sección */
+            border-radius: 12px;
+            padding: clamp(.75rem, 2.5vw, 1.25rem);
+            border: 1px solid rgba(15, 23, 42, 0.04);
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+            max-width: 520px;
+            margin-left: auto;
+            margin-right: auto;
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+
+        /* Hover / focus ligero */
+        .about__media--card:hover,
+        .about__media--card:focus-within {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 36px rgba(15, 23, 42, 0.06);
+        }
+
+        /* SVG icon: use currentColor so color se controla desde CSS */
+        .about__avatar {
+            width: min(360px, 72%);
+            height: auto;
+            display: block;
+        }
+
+        /* Opciones de color rápidas: gris o negro */
+        .about__avatar--dark {
+            color: #0b0b0b;
+        }
+
+        /* negro */
+        .about__avatar--gray {
+            color: #6b7280;
+        }
+
+        /* gris medio (gray-500) */
+
+        /* Si el contenedor tiene fondo blanco, evita que el rect del SVG sobresalga */
+        .about__avatar rect {
+            fill: none;
+        }
+
+        /* Responsivo: reducir tamaño en pantallas pequeñas */
+        @media (max-width: 720px) {
+            .about__media--card {
+                max-width: 360px;
+                padding: .75rem;
+            }
+
+            .about__avatar {
+                width: min(260px, 72%);
+            }
+        }
+
+        /* Si usas un layout con gutters oscuros, asegúrate la sección ocupa toda la anchura */
+        .section--white .container {
+            background: transparent;
+        }
+
+        /* Opcional: si quieres borde superior/inferior sutil para separar secciones */
+        .section--white {
+            border-top: 1px solid rgba(15, 23, 42, 0.03);
+            border-bottom: 1px solid rgba(15, 23, 42, 0.03);
+        }
+
+        :root {
+            /* Ajustes principales: cambia estos valores si quieres tamaños o tonos distintos */
+            --icon-badge-size: 160px;
+            /* tamaño del círculo alrededor del icono (desktop) */
+            --icon-size: 96px;
+            /* tamaño del SVG dentro del badge (desktop) */
+            --icon-stroke: 2.4;
+            /* grosor del trazo (outline) */
+            --icon-color: #9CA3AF;
+            /* gris clarito para el icono (puedes cambiar por otro hex) */
+            --icon-badge-bg: rgba(156, 162, 175, 0.06);
+            /* fondo sutil del badge */
+            --check-color: #4B5563;
+            /* color de los checks (gris medio) */
+            --card-border: rgba(15, 23, 42, 0.04);
+        }
+
+        /* Mantener grid / section existentes */
+        .section--white {
+            background: #fff;
+            color: #0b0b0b;
+            padding: clamp(2rem, 4vw, 3.2rem) 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Grid: deja 3/2/1 columnas según ancho */
+        .services__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: clamp(1rem, 2.4vw, 1.6rem);
+            margin-top: 1.2rem;
+        }
+
+        /* Tarjeta base (sin cambiar estructura) */
+        .service-card {
+            display: flex;
+            flex-direction: column;
+            gap: .8rem;
+            padding: 1.25rem;
+            border-radius: 12px;
+            background: #fff;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+        }
+
+        /* Centrado máximo del área media (badge) */
+        .service-card__media {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Badge circular más grande, color clarito y centrado */
+        .icon-badge {
+            width: var(--icon-badge-size);
+            height: var(--icon-badge-size);
+            border-radius: 999px;
+            display: grid;
+            place-items: center;
+            background: var(--icon-badge-bg);
+            color: var(--icon-color);
+            margin: 0 auto;
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02) inset;
+            flex-shrink: 0;
+        }
+
+        /* Iconos outline: mayor tamaño y trazo más grueso para nitidez */
+        .icon--outline {
+            width: var(--icon-size);
+            height: var(--icon-size);
+            stroke: currentColor;
+            fill: none;
+            stroke-width: var(--icon-stroke);
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            color: var(--icon-color);
+        }
+
+        .icon--outline path,
+        .icon--outline circle,
+        .icon--outline rect {
+            stroke: currentColor;
+        }
+
+        /* Variante filled mantiene el tamaño pero con relleno */
+        .icon--filled {
+            width: var(--icon-size);
+            height: var(--icon-size);
+            fill: currentColor;
+            stroke: none;
+            color: var(--icon-color);
+        }
+
+        /* Body: centrar título y subtítulo; mantener lista legible */
+        .service-card__body {
+            display: flex;
+            flex-direction: column;
+            gap: .6rem;
+            align-items: center;
+            /* centra título y subtítulo */
+            text-align: center;
+        }
+
+        /* Títulos y subtítulos centrados */
+        .service-card__title {
+            font-size: 1.05rem;
+            margin: 0;
+            color: #0b1220;
+            font-weight: 700;
+        }
+
+        .service-card__subtitle {
+            margin: 0 0 .4rem;
+            color: #374151;
+            font-size: .97rem;
+        }
+
+        /* Lista: centrada como bloque pero items alineados a la izquierda para legibilidad */
+        .service-card__list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: .75rem;
+            width: 100%;
+            max-width: 78%;
+            /* centra la lista como bloque y evita que ocupe todo el ancho */
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+            /* los items mantienen alineación izquierda interna */
+        }
+
+        /* Items de la lista con checks más visibles */
+        .service-card__list li {
+            display: flex;
+            align-items: flex-start;
+            gap: .6rem;
+            color: #6b7280;
+            font-size: .98rem;
+            line-height: 1.55;
+        }
+
+        /* Checks aumentados y nítidos */
+        .icon--check {
+            width: 22px;
+            height: 22px;
+            color: var(--check-color);
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex: 0 0 22px;
+            margin-top: .12rem;
+        }
+
+        /* Hover sutil (desktop) */
+        @media (hover: hover) and (pointer: fine) {
+            .service-card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 14px 36px rgba(15, 23, 42, 0.06);
+            }
+        }
+
+        /* Breakpoints: reduce badge e icono en tablet / móvil para buena proporción */
+        @media (max-width: 900px) {
+            .services__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            :root {
+                --icon-badge-size: 120px;
+                --icon-size: 72px;
+                --icon-stroke: 2.0;
+            }
+
+            .service-card__list {
+                max-width: 84%;
+            }
+        }
+
+        @media (max-width: 620px) {
+            .services__grid {
+                grid-template-columns: 1fr;
+            }
+
+            :root {
+                --icon-badge-size: 88px;
+                --icon-size: 52px;
+                --icon-stroke: 1.6;
+            }
+
+            .service-card {
+                padding: .95rem;
+            }
+
+            .service-card__title {
+                font-size: 1rem;
+            }
+
+            .service-card__list {
+                max-width: 92%;
+            }
+        }
+
+        /* Utilidades para sobreescribir color por tarjeta si se desea */
+        .icon-badge--primary {
+            --icon-color: #1f8ef1;
+        }
+
+        .icon-badge--muted {
+            --icon-color: #c7cdd4;
+        }
+
+        /* Quitar líneas y separadores entre secciones */
+        .section,
+        .section[aria-labelledby] {
+            background: #fff !important;
+            /* fondo blanco consistente */
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        /* Eliminar pseudo-elementos decorativos que pueden dibujar líneas */
+        .section::before,
+        .section::after,
+        .section[aria-labelledby] .container::before,
+        .section .container::before {
+            display: none !important;
+            content: none !important;
+        }
+
+        /* Evitar bordes entre secciones adyacentes */
+        .section+.section {
+            margin-top: 0;
+            border-top: none !important;
+        }
+
+        /* Ocultar hr o elementos con rol/señal de separador */
+        hr,
+        [role="separator"],
+        .divider {
+            display: none !important;
+        }
+
+        /* Si la "línea" proviene de un borde de los contenedores internos */
+        .container,
+        .service-card {
+            border: none !important;
+            box-shadow: none !important;
+            background: transparent !important;
+        }
+
+        /* En caso de que exista una línea muy fina por outline/focus no deseado */
+        * {
+            outline: none !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -71,110 +483,207 @@
     </header>
 
     <main id="contenido">
-        <section class="hero" style="min-height:420px" aria-labelledby="aboutHeroTitle">
-            <div class="hero__bg" style="background-image:url('assets/about-team.jpg');filter:brightness(.45)"></div>
-            <div class="hero__overlay--brand"
-                style="background:linear-gradient(135deg,rgba(15,29,43,.85),rgba(15,29,43,.55),rgba(15,29,43,.88))">
+        <section class="hero hero--brand hero--video" id="inicio" aria-labelledby="heroTitle">
+            <!-- Capa multimedia -->
+            <div class="hero__media" aria-hidden="true">
+
+                <video class="hero__video" autoplay muted loop playsinline preload="auto"
+                    poster="media/images/meeting.png">
+                    <source src="media/video/meeting2.mp4" type="video/mp4">
+                    <!-- Fallback: si no soporta video verá el poster -->
+                </video>
             </div>
+
+            <!-- Overlay para contraste -->
+            <div class="hero__overlay hero__overlay--brand"></div>
+
+            <!-- Contenido -->
             <div class="hero__content container">
-                <div class="hero__box">
-                    <h1 class="hero__title" id="aboutHeroTitle">Personas, Datos y <span
-                            class="highlight">Ejecución</span></h1>
-                    <p class="hero__lead">Integramos consultoría operativa con gestión de talento para acompañar tu
-                        crecimiento sostenible.</p>
+                <div class="hero__box hero__box--brand">
+                    <h1 class="hero__title" id="heroTitle">
+                        Integramos consultoría operativa con <br>
+                        <span class="highlight">gestión de talento para acompañar tu
+                            crecimiento sostenible.</span>
+                    </h1>
+
+                    <div class="hero__actions">
+                        <a href="https://jgarduno.me/landing-talents-code" class="btn btn--primary">Agenda una consulta</a>
+                        <a href="https://jgarduno.me/landing-talents-code/servicios" class="btn btn--ghost">Ver servicios</a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="section" aria-labelledby="quienesTitle">
+
+        <section class="section section--white" aria-labelledby="quienesTitle">
             <div class="container about__grid">
                 <div>
                     <h2 class="section__title" id="quienesTitle">Quiénes <span class="highlight">Somos</span></h2>
-                    <p>Somos un equipo multidisciplinario que une experiencia en escalamiento operativo, people
-                        analytics y adquisición de talento.</p>
-                    <p class="u-muted">Actuamos como extensión estratégica: reducimos fricción, clarificamos métricas y
-                        aceleramos adopción.</p>
+                    <p>Somos una agencia de reclutamiento, evaluación y consultoría estrategica de talento humano para
+                        empresas</p>
+                    <p class="u-muted">Combinamos la estrategia, el análisis del mercado laboral y del puesto, nuestra
+                        expertiz en conocimiento en empresas y personas...</p>
                     <ul class="about__bullets">
-                        <li>Foco en calidad de contratación y tiempo a productividad.</li>
-                        <li>Modelos de evaluación alineados a cultura y performance esperado.</li>
-                        <li>Implementación orientada a escalabilidad y reducción de riesgo.</li>
+                        <li>Servicios en contratación.</li>
+                        <li>Asesoría y evaluaciones de talento estratégico.</li>
+                        <li>Reclutamiento masivo de personal.</li>
                     </ul>
                 </div>
-                <figure class="about__media">
-                    <img src="assets/about-team.jpg" alt="Equipo colaborando" width="720" height="576" loading="lazy">
+
+                <figure class="about__media about__media--card about__media--neutral" role="img"
+                    aria-labelledby="quienes-avatar-title">
+                    <svg class="about__avatar about__avatar--gray" viewBox="0 0 120 120"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="quienes-avatar-title"
+                        focusable="false" preserveAspectRatio="xMidYMid meet">
+                        <title id="quienes-avatar-title">Icono de equipo: dos personas</title>
+
+                        <!-- fondo neutro (vacío para que el contenedor controle el fondo) -->
+                        <rect x="6" y="6" width="108" height="108" rx="14" fill="none"></rect>
+
+                        <!-- figura de dos personas usando currentColor -->
+                        <g transform="translate(0,0)" fill="currentColor" stroke="none">
+                            <circle cx="70" cy="46" r="12" />
+                            <path d="M50 86c0-12 14-24 30-24s30 12 30 24v6H50v-6z" />
+                            <circle cx="42" cy="54" r="9" />
+                            <path d="M28 94c0-9 10-18 22-18s22 9 22 18v3H28v-3z" />
+                        </g>
+                    </svg>
                 </figure>
             </div>
         </section>
 
-        <section class="section" aria-labelledby="metodologiaTitle">
+        <section class="section section--white" aria-labelledby="metodologiaTitle">
             <div class="container">
                 <h2 class="section__title" id="metodologiaTitle">Nuestra <span class="highlight">Metodología</span></h2>
-                <div class="services__grid">
-                    <article class="service-card">
+
+                <div class="services__grid" role="list">
+                    <!-- Contratación -->
+                    <article class="service-card" role="listitem" aria-labelledby="svc-contratacion-title">
+                        <div class="service-card__media" aria-hidden="true">
+                            <div class="icon-badge" title="Contratación">
+                                <!-- Document / profile (outline) -->
+                                <svg class="icon icon--outline" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                    focusable="false" aria-hidden="true">
+                                    <rect x="7" y="3" width="10" height="18" rx="2"></rect>
+                                    <path d="M9 8h6" stroke-linecap="round"></path>
+                                    <path d="M9 12h6" stroke-linecap="round" opacity="0.9"></path>
+                                </svg>
+                            </div>
+                        </div>
+
                         <div class="service-card__body">
-                            <h3 class="service-card__title">Diagnóstico Operativo</h3>
-                            <p>Levantamos contexto de tu funnel de talento, roles críticos y métricas actuales.</p>
+                            <h3 class="service-card__title" id="svc-contratacion-title">Para servicios de contratación
+                            </h3>
+                            <p class="service-card__subtitle">¿Necesitas opciones, contratar más y mejorar talento que
+                                haga crecer tu empresa?</p>
+
+                            <ul class="service-card__list">
+                                <li>
+                                    <svg class="icon icon--check" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M20 6L9 17l-5-5" />
+                                    </svg>
+                                    Servicio de contratación de talento especializado.
+                                </li>
+                                <li>
+                                    <svg class="icon icon--check" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M20 6L9 17l-5-5" />
+                                    </svg>
+                                    Servicio de contratación de talento digital y tecnológico.
+                                </li>
+                                <li>
+                                    <svg class="icon icon--check" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M20 6L9 17l-5-5" />
+                                    </svg>
+                                    Servicios de contratación de personal operativo (fijo y por proyecto).
+                                </li>
+                                <li>
+                                    <svg class="icon icon--check" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M20 6L9 17l-5-5" />
+                                    </svg>
+                                    Servicio extremo de contratación de talento.
+                                </li>
+                            </ul>
                         </div>
                     </article>
-                    <article class="service-card">
+
+                    <!-- Consultoría -->
+                    <article class="service-card" role="listitem" aria-labelledby="svc-consultoria-title">
+                        <div class="service-card__media" aria-hidden="true">
+                            <div class="icon-badge" title="Consultoría">
+                                <!-- Users (outline) -->
+                                <!-- Reemplaza dentro de: <div class="icon-badge"> ... </div> -->
+                                <svg class="icon icon--outline" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                    focusable="false" aria-hidden="true">
+                                    <circle cx="8" cy="8" r="2.2"></circle>
+                                    <path d="M4.5 18c1-2 4-4 7.5-4s6.5 2 7.5 4" stroke-linecap="round"></path>
+                                    <path d="M14 9.5h6v6" stroke-linecap="round" opacity="0.9"></path>
+                                    <path d="M16 12l1.5-1.5L20 12" stroke-linecap="round"></path>
+                                </svg>
+                            </div>
+                        </div>
+
                         <div class="service-card__body">
-                            <h3 class="service-card__title">Diseño y Priorización</h3>
-                            <p>Definimos quick wins y un roadmap trimestral enfocado en valor capturable.</p>
+                            <h3 class="service-card__title" id="svc-consultoria-title">Para servicios de consultoría
+                            </h3>
+                            <p class="service-card__subtitle">Más soluciones en estrategias de talento para tu empresa:
+                            </p>
+
+                            <ul class="service-card__list">
+                                <li>
+                                    <svg class="icon icon--check" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M20 6L9 17l-5-5" />
+                                    </svg>
+                                    Asesoría en crecimiento y evaluación de talentos.
+                                </li>
+                                <li>
+                                    <svg class="icon icon--check" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M20 6L9 17l-5-5" />
+                                    </svg>
+                                    Consultoría y evaluación de talento que ya tienes para diferentes estrategias.
+                                </li>
+                            </ul>
                         </div>
                     </article>
-                    <article class="service-card">
-                        <div class="service-card__body">
-                            <h3 class="service-card__title">Ejecución Guiada</h3>
-                            <p>Acompañamiento táctico en reclutamiento, evaluación y adopción de procesos.</p>
+
+                    <!-- Reclutamiento masivo -->
+                    <article class="service-card" role="listitem" aria-labelledby="svc-masivo-title">
+                        <div class="service-card__media" aria-hidden="true">
+                            <div class="icon-badge" title="Reclutamiento masivo">
+                                <!-- Worker / helmet (outline) -->
+                                <svg class="icon icon--outline" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                    focusable="false" aria-hidden="true">
+                                    <path d="M12 3c3 0 5 1 6 2.5" opacity="0.95"></path>
+                                    <path d="M6 14c0-3 3.6-6 6-6s6 3 6 6v3H6v-3z" stroke-linecap="round"></path>
+                                    <path d="M8 12h8" opacity="0.7"></path>
+                                </svg>
+                            </div>
                         </div>
-                    </article>
-                    <article class="service-card">
+
                         <div class="service-card__body">
-                            <h3 class="service-card__title">Iteración y Métricas</h3>
-                            <p>Medimos impacto en retención temprana, tiempo de cierre y rampa productiva.</p>
+                            <h3 class="service-card__title" id="svc-masivo-title">Para reclutamiento masivo de personal
+                            </h3>
+                            <p class="service-card__subtitle">¿Necesitas contratar operativos por expansión o mes con
+                                mes?</p>
+
+                            <ul class="service-card__list">
+                                <li>
+                                    <svg class="icon icon--check" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M20 6L9 17l-5-5" />
+                                    </svg>
+                                    Reclutamiento masivo y estratégico de personal.
+                                </li>
+                                <li>
+                                    <svg class="icon icon--check" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M20 6L9 17l-5-5" />
+                                    </svg>
+                                    Reclutamiento estratégico y por zona sur-este.
+                                </li>
+                            </ul>
                         </div>
                     </article>
                 </div>
             </div>
         </section>
-
-        <section class="section" aria-labelledby="equipoTitle">
-            <div class="container">
-                <h2 class="section__title" id="equipoTitle">Nuestro <span class="highlight">Equipo</span></h2>
-                <p style="max-width:760px;margin:0 auto 2.2rem;text-align:center">
-                    Estructuramos células según tu etapa: recruiters especializados, analistas de people data y
-                    facilitadores de procesos.
-                </p>
-                <!-- Placeholder equipo -->
-                <div class="services__grid">
-                    <article class="service-card">
-                        <div class="service-card__body">
-                            <h3 class="service-card__title">Recruitment Lead</h3>
-                            <p>Coordina estrategia de sourcing y validaciones técnicas.</p>
-                        </div>
-                    </article>
-                    <article class="service-card">
-                        <div class="service-card__body">
-                            <h3 class="service-card__title">People Analytics</h3>
-                            <p>Transforma datos de funnel en decisiones accionables.</p>
-                        </div>
-                    </article>
-                    <article class="service-card">
-                        <div class="service-card__body">
-                            <h3 class="service-card__title">Process Specialist</h3>
-                            <p>Rediseña flujos y reduce tiempos muertos.</p>
-                        </div>
-                    </article>
-                    <article class="service-card">
-                        <div class="service-card__body">
-                            <h3 class="service-card__title">Onboarding Coach</h3>
-                            <p>Optimiza rampa productiva y retención temprana.</p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
         <section class="section" aria-labelledby="ctaTitle">
             <div class="container" style="text-align:center">
                 <h2 class="section__title" id="ctaTitle">Escala con <span class="highlight">Estructura</span></h2>
@@ -183,6 +692,9 @@
                 <a href="/servicios.html" class="btn btn--primary">Ver soluciones</a>
             </div>
         </section>
+<br><br><br>
+
+
     </main>
 
 
@@ -192,8 +704,8 @@
             <!-- IZQUIERDA: Número de contacto -->
             <div class="site-footer__left">
                 <div class="footer-contact" aria-label="Teléfonos de contacto">
-                    <a href="tel:+529990000000" class="footer-phone" aria-label="Llamar a Talents Code">
-                        <span class="footer-phone__label">Tel:</span> +52 (999) 000 0000
+                    <a href="tel:+525586346704" class="footer-phone" aria-label="Llamar a Talents Code">
+                        <span class="footer-phone__label">Tel:</span> +52 558 634 6704
                     </a>
                     <br>
                 </div>
@@ -201,7 +713,7 @@
 
             <!-- CENTRO: Correo + Derechos -->
             <div class="site-footer__center">
-                <a href="mailto:contacto@talentscode.com" class="footer-email">contacto@talentscode.com</a>
+                <a href="mailto:contacto@talentscode.com.mx" class="footer-email">hello@talentscode.com.mx</a>
                 <span class="footer-divider" aria-hidden="true">•</span>
                 <small class="footer-copy">&copy; <span id="year"></span> Talents Code. Todos los derechos
                     reservados.</small>

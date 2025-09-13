@@ -142,20 +142,37 @@
     </header>
 
     <main id="contenido">
-        <section class="hero" style="min-height:400px" aria-labelledby="servHeroTitle">
-            <div class="hero__bg"
-                style="background-image:url('assets/servicios/reclutamiento.jpg');filter:brightness(.50)"></div>
-            <div class="hero__overlay--brand"
-                style="background:linear-gradient(135deg,rgba(15,29,43,.85),rgba(15,29,43,.55),rgba(15,29,43,.88))">
+
+        <section class="hero hero--brand hero--video" id="inicio" aria-labelledby="heroTitle">
+            <!-- Capa multimedia -->
+            <div class="hero__media" aria-hidden="true">
+
+                <video class="hero__video" autoplay muted loop playsinline preload="auto"
+                    poster="media/images/meeting.png">
+                    <source src="media/video/meeting2.mp4" type="video/mp4">
+                    <!-- Fallback: si no soporta video verá el poster -->
+                </video>
             </div>
+
+            <!-- Overlay para contraste -->
+            <div class="hero__overlay hero__overlay--brand"></div>
+
+            <!-- Contenido -->
             <div class="hero__content container">
-                <div class="hero__box">
-                    <h1 class="hero__title" id="servHeroTitle">Soluciones de <span class="highlight">Talento</span> para
-                        Escalar</h1>
-                    <p class="hero__lead">Intervenimos donde más impacto generas: adquisición, validación, adopción y
-                        cumplimiento.</p>
+                <div class="hero__box hero__box--brand">
+                    <h1 class="hero__title" id="heroTitle">
+                        Soluciones de Talento<br>
+                        <span class="highlight">para
+                            Escalar
+                        </span>
+                    </h1>
+                    <p class="hero__lead">
+                        Intervenimos donde más impacto generas: adquisición, validación, adopción y
+                        cumplimiento
+                    </p>
                     <div class="hero__actions">
-                        <a href="/index.html#contacto" class="btn btn--primary">Solicitar propuesta</a>
+                        <a href="#contacto" class="btn btn--primary">Agenda una consulta</a>
+                        <a href="/servicios.html" class="btn btn--ghost">Ver servicios</a>
                     </div>
                 </div>
             </div>
@@ -312,8 +329,8 @@
             <!-- IZQUIERDA: Número de contacto -->
             <div class="site-footer__left">
                 <div class="footer-contact" aria-label="Teléfonos de contacto">
-                    <a href="tel:+529990000000" class="footer-phone" aria-label="Llamar a Talents Code">
-                        <span class="footer-phone__label">Tel:</span> +52 (999) 000 0000
+                    <a href="tel:+525586346704" class="footer-phone" aria-label="Llamar a Talents Code">
+                        <span class="footer-phone__label">Tel:</span> +52 558 634 6704
                     </a>
                     <br>
                 </div>
@@ -321,7 +338,7 @@
 
             <!-- CENTRO: Correo + Derechos -->
             <div class="site-footer__center">
-                <a href="mailto:contacto@talentscode.com" class="footer-email">contacto@talentscode.com</a>
+                <a href="mailto:contacto@talentscode.com.mx" class="footer-email">hello@talentscode.com.mx</a>
                 <span class="footer-divider" aria-hidden="true">•</span>
                 <small class="footer-copy">&copy; <span id="year"></span> Talents Code. Todos los derechos
                     reservados.</small>
