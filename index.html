@@ -41,7 +41,250 @@
     "description":"Reclutamiento especializado, evaluación, onboarding y soluciones de expansión legal."
   }
   </script>
+  <style>
+    /* --- 1. Variables de Diseño y Configuración Global --- */
+    :root {
+      /* Paleta de colores */
+      --color-background: #FFFFFF;
+      /* Fondo de la sección (blanco) */
+      --color-card-background: #FFFFFF;
+      --color-primary-text: #1D2939;
+      /* Para títulos y nombres */
+      --color-secondary-text: #475467;
+      /* Para el cuerpo del comentario */
+      --color-subtle-text: #667085;
+      /* Para el rol o cargo */
+      --color-border: #EAECF0;
+      --color-accent: #000000;
+      /* Borde del avatar (morado) */
+      --color-icon: #98A2B3;
+      /* Flechas y contador */
 
+      /* Tipografía */
+      --font-family-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    /* --- 2. Estilos de la Sección de Comentarios --- */
+    .tc-comments {
+      background-color: var(--color-background);
+      font-family: var(--font-family-main);
+      padding: 80px 20px;
+      /* Espacio arriba y abajo */
+    }
+
+    .tc-wrap {
+      max-width: 820px;
+      /* Un poco más ancho para dar espacio a las flechas */
+      margin: 0 auto;
+      position: relative;
+      /* Clave para posicionar las flechas */
+    }
+
+    .tc-title {
+      text-align: center;
+      font-size: 2.25rem;
+      /* 36px */
+      font-weight: 700;
+      color: var(--color-primary-text);
+      margin-bottom: 48px;
+    }
+
+    /* --- 3. Estructura del Carrusel --- */
+    .tc-carousel {
+      position: relative;
+      overflow: hidden;
+      /* Espacio para que el box-shadow de la tarjeta no se corte */
+      padding: 5px;
+    }
+
+    .tc-track {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      /* Transición más suave */
+    }
+
+    .tc-slide {
+      flex: 0 0 100%;
+      min-width: 100%;
+      box-sizing: border-box;
+      padding: 0 40px;
+      /* Espacio para que la tarjeta no toque las flechas */
+    }
+
+    /* --- 4. Estilos de la Tarjeta (El Look Principal) --- */
+    .tc-card {
+      background-color: var(--color-card-background);
+      border-radius: 16px;
+      border: 1px solid var(--color-border);
+      padding: 40px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .tc-card__header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .tc-card__avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 16px;
+      border: 2px solid var(--color-accent);
+      /* Borde morado como en la imagen */
+    }
+
+    .tc-card__name {
+      margin: 0;
+      font-size: 1.125rem;
+      /* 18px */
+      font-weight: 600;
+      color: var(--color-primary-text);
+    }
+
+    .tc-card__role {
+      margin: 0;
+      font-size: 0.875rem;
+      /* 14px */
+      color: var(--color-subtle-text);
+    }
+
+    .tc-card__quote p {
+      margin: 0;
+      font-size: 1.125rem;
+      /* 18px */
+      line-height: 1.6;
+      color: var(--color-secondary-text);
+    }
+
+    /* --- 5. Controles (Flechas y Contador) --- */
+    .tc-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      /* Sin fondo */
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+      color: var(--color-icon);
+      transition: color 0.2s ease;
+      z-index: 10;
+    }
+
+    .tc-nav:hover {
+      color: var(--color-primary-text);
+      /* Se oscurecen al pasar el mouse */
+    }
+
+    .tc-nav:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .tc-prev {
+      left: 0;
+    }
+
+    .tc-next {
+      right: 0;
+    }
+
+    /* Ocultamos los puntos de navegación, ya que no están en el diseño */
+    .tc-dots {
+      display: none;
+    }
+
+    .tc-counter {
+      position: absolute;
+      bottom: -25px;
+      /* Lo bajamos un poco para que no quede pegado */
+      left: 50%;
+      /* Lo movemos al centro horizontal */
+      transform: translateX(-50%);
+      /* Ajustamos su posición para centrarlo perfectamente */
+      font-size: 1rem;
+      color: var(--color-icon);
+      font-weight: 500;
+    }
+
+    /* --- 6. Diseño Responsivo (Tablets y Móviles) --- */
+    @media (max-width: 768px) {
+
+      /* Reducimos el espaciado general de la sección */
+      .tc-comments {
+        padding: 60px 15px;
+        /* Añadimos espacio extra abajo para los nuevos controles */
+        padding-bottom: 100px;
+      }
+
+      .tc-wrap {
+        max-width: 100%;
+        /* Ocupa todo el ancho disponible */
+      }
+
+      /* Reducimos el tamaño del título */
+      .tc-title {
+        font-size: 2rem;
+        /* Un poco más pequeño */
+        margin-bottom: 30px;
+      }
+
+      /* Eliminamos el padding lateral del slide para dar más espacio a la tarjeta */
+      .tc-slide {
+        padding: 0;
+      }
+
+      /* Ajustamos el padding de la tarjeta */
+      .tc-card {
+        padding: 30px;
+      }
+
+      /* Reducimos un poco los textos internos de la tarjeta */
+      .tc-card__name,
+      .tc-card__quote p {
+        font-size: 1rem;
+      }
+
+      /* --- REPOSICIONAMIENTO DE CONTROLES --- */
+
+      /* Movemos las flechas debajo de la tarjeta */
+      .tc-nav {
+        top: auto;
+        /* Anulamos el centrado vertical */
+        bottom: -80px;
+        /* Las posicionamos abajo */
+        transform: none;
+        /* Quitamos la transformación previa */
+      }
+
+      /* Centramos el par de flechas y las separamos */
+      .tc-prev {
+        left: 50%;
+        transform: translateX(-150%);
+        /* Hacia la izquierda desde el centro */
+      }
+
+      .tc-next {
+        left: 50%;
+        transform: translateX(50%);
+        /* Hacia la derecha desde el centro */
+      }
+
+      /* Movemos el contador un poco más abajo para que quede sobre las flechas */
+      .tc-counter {
+        bottom: -20px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -74,8 +317,8 @@
       <!-- Capa multimedia -->
       <div class="hero__media" aria-hidden="true">
 
-        <video class="hero__video" autoplay muted loop playsinline preload="auto"
-          <source src="media/video/meeting1.mp4" type="video/mp4">
+        <video class="hero__video" autoplay muted loop playsinline preload="auto" <source src="media/video/meeting1.mp4"
+          type="video/mp4">
           <!-- Fallback: si no soporta video verá el poster -->
         </video>
       </div>
@@ -113,119 +356,268 @@
           buscamos ser partner de las empresas y tecnologías que nuestros clientes necesitan.
         </p>
         <div class="section__actions">
-          <a href="https://jgarduno.me/landing-talents-code/nosotros" class="btn btn--primary">Conoce nuestra metodología</a>
-          <a href="https://jgarduno.me/landing-talents-code/servicios" class="btn btn--ghost">Soluciones para tu empresa</a>
+          <a href="https://jgarduno.me/landing-talents-code/nosotros" class="btn btn--primary">Conoce nuestra
+            metodología</a>
+          <a href="https://jgarduno.me/landing-talents-code/servicios" class="btn btn--ghost">Soluciones para tu
+            empresa</a>
         </div>
       </div>
     </section>
 
-    <section id="testimonios" class="section testimonials" aria-labelledby="testimonios-title">
-      <div class="container">
-        <h2 id="testimonios-title" class="section__title">Testimonios</h2>
+    <section id="comentarios" class="tc-comments" aria-labelledby="tc-comments-title">
+      <div class="tc-wrap">
+        <h2 class="section__title" id="clientesTitle">
+          Comentarios de <span class="highlight">nuestros clientes</span>
+        </h2>
 
-        <div class="testimonials__viewport" aria-live="polite">
-          <ul class="testimonials__track">
-            <!-- Slide 1 -->
-            <li class="testimonial" aria-label="Testimonio 1">
-              <header class="testimonial__header">
-                <div class="testimonial__meta">
-                  <img class="testimonial__avatar" src="media/images/clientes/logo-neustart-150x150.webp"
-                    alt="Foto de Cynthia Gamboa" loading="lazy" width="64" height="64">
-                  <div class="testimonial__identity">
-                    <div class="testimonial__name">Cynthia Gamboa</div>
-                    <div class="testimonial__role u-muted">Director de Marketing en Neustrat</div>
+        <div class="tc-carousel" role="region" aria-roledescription="carrusel" aria-label="Comentarios de clientes"
+          aria-live="polite">
+          <ul class="tc-track">
+            <li class="tc-slide" role="group" aria-roledescription="diapositiva" aria-label="Comentario 1 de 12">
+              <article class="tc-card">
+                <header class="tc-card__header">
+                  <img class="tc-card__avatar" src="media/images/clientes/people.png" alt="Logo de Hint" width="64"
+                    height="64" loading="lazy">
+                  <div class="tc-card__id">
+                    <h3 class="tc-card__name">Juan Carlos Hernandez</h3>
+                    <p class="tc-card__role">Cofounder en Hint</p>
                   </div>
-                </div>
-              </header>
-              <blockquote class="testimonial__quote">
-                <p>Muchas gracias a todo el equipo, ha sido un verdadero gusto poder hacer sinergia y trabajar en
-                  conjunto.
-                  En un inicio nos ayudaron con un estudio y realizar un perfil de nuestra empresa para posteriormente
-                  reclutar a
-                  nuestro personal en base a las necesidades que teníamos en ese momento.</p>
-                <p>De igual manera nos apoyaron otorgando capacitaciones en diversas áreas y ayudándonos en todo momento
-                  con tips
-                  y seguimiento con el personal contratado.</p>
-                <p>Totalmente recomendados… ¡Muchas felicidades! y que sigan con ese espíritu de generar ese click entre
-                  empleadores y colaboradores. Gracias.</p>
-              </blockquote>
+                </header>
+                <blockquote class="tc-card__quote">
+                  <p>“Han funcionado, maravillosamente, maravillosamente. Nos acercan a prospectos que no teníamos ni
+                    idea que existían; realmente es como hacerle una cartita a santa claus a una empresa, decirle quiero
+                    a una persona con estas características, y llegan y te dicen que tengo 3”</p>
+                </blockquote>
+              </article>
             </li>
 
-            <!-- Slide 2 -->
-            <li class="testimonial" aria-label="Testimonio 2">
-              <header class="testimonial__header">
-                <div class="testimonial__meta">
-                  <img class="testimonial__avatar" src="media/images/clientes/logotipo-itineraria-150x150.webp"
-                    alt="Foto de María López" loading="lazy" width="64" height="64">
-                  <div class="testimonial__identity">
-                    <div class="testimonial__name">Diego Moguel</div>
-                    <div class="testimonial__role u-muted">Director de Itineraria</div>
+            <li class="tc-slide" role="group" aria-roledescription="diapositiva" aria-label="Comentario 2 de 12">
+              <article class="tc-card">
+                <header class="tc-card__header">
+                  <img class="tc-card__avatar" src="media/images/clientes/logotipo-itineraria-150x150.webp"
+                    alt="Logo de Itineraria" width="64" height="64" loading="lazy">
+                  <div class="tc-card__id">
+                    <h3 class="tc-card__name">Cynthia Gamboa</h3>
+                    <p class="tc-card__role">Socia y fundadora en Itineraria</p>
                   </div>
-                </div>
-              </header>
-              <blockquote class="testimonial__quote">
-                <p>Nos apoyaron en 2 puntos muy importantes de la empresa, los puntos débiles en el personal que
-                  teníamos y en la contratación de nuevo talento, y fue de las mejores decisiones que hemos tomado.
-                </p>
-                <p>Estamos muy contentos con los resultados obtenidos.</p>
-              </blockquote>
+                </header>
+                <blockquote class="tc-card__quote">
+                  <p>En un inicio nos ayudaron con un estudio y realizar un perfil de nuestra empresa para
+                    posteriormente reclutar a nuestro personal en base a las necesidades que teníamos en ese momento. De
+                    igual manera nos apoyaron otorgando capacitaciones... Totalmente recomendados... ¡Muchas
+                    felicidades!</p>
+                </blockquote>
+              </article>
             </li>
 
-            <!-- Slide 3 -->
-            <li class="testimonial" aria-label="Testimonio 3">
-              <header class="testimonial__header">
-                <div class="testimonial__meta">
-                  <img class="testimonial__avatar" src="media/images/clientes/Affenbits-150x150.webp"
-                    alt="Foto de Jorge Pérez" loading="lazy" width="64" height="64">
-                  <div class="testimonial__identity">
-                    <div class="testimonial__name">Jorge Hernández</div>
-                    <div class="testimonial__role u-muted">Director de Affenbits</div>
+            <li class="tc-slide" role="group" aria-roledescription="diapositiva" aria-label="Comentario 3 de 12">
+              <article class="tc-card">
+                <header class="tc-card__header">
+                  <img class="tc-card__avatar" src="media/images/clientes/people.png" alt="Logo de Itineraria"
+                    width="64" height="64" loading="lazy">
+                  <div class="tc-card__id">
+                    <h3 class="tc-card__name">Luis Ramos</h3>
+                    <p class="tc-card__role">Software Engineering Team Lead en Deel</p>
                   </div>
-                </div>
-              </header>
-              <blockquote class="testimonial__quote">
-                <p>Desde el inicio de la pandemia solicitamos los servicios de Talents Code para la contratación de
-                  programadores y hasta el día de hoy seguimos acudiendo a ellos. Quiero decir que la experiencia es
-                  excepcional. Mucho profesionalismo en el proceso.</p>
-                <p>¡Excelente servicio compañeros!</p>
-              </blockquote>
+                </header>
+                <blockquote class="tc-card__quote">
+                  <p>“En un momento donde requerimos contratar rápidamente personal para el equipo de desarrollo,
+                    Talents Code fue un aliado atento y eficaz. En poco tiempo nos presentaron opciones interesantes y
+                    la contratación fue inmediata”</p>
+                </blockquote>
+              </article>
             </li>
+
+            <li class="tc-slide" role="group" aria-roledescription="diapositiva" aria-label="Comentario 4 de 12">
+              <article class="tc-card">
+                <header class="tc-card__header">
+                  <img class="tc-card__avatar" src="media/images/clientes/Affenbits-150x150.webp"
+                    alt="Logo de Affenbits" width="64" height="64" loading="lazy">
+                  <div class="tc-card__id">
+                    <h3 class="tc-card__name">Jorge Hernández Castillo</h3>
+                    <p class="tc-card__role">Director en Affenbits</p>
+                  </div>
+                </header>
+                <blockquote class="tc-card__quote">
+                  <p>Desde el inicio de la pandemia solicitamos los servicios de Talents Code para la contratación de
+                    programadores y hasta el día de hoy seguimos acudiendo a ellos. Quiero decir que la experiencia es
+                    excepcional. Mucho profesionalismo en el proceso. ¡Excelente servicio compañeros!</p>
+                </blockquote>
+              </article>
+            </li>
+
+            <li class="tc-slide" role="group" aria-roledescription="diapositiva" aria-label="Comentario 5 de 12">
+              <article class="tc-card">
+                <header class="tc-card__header">
+                  <img class="tc-card__avatar" src="media/images/clientes/Affenbits-150x150.webp"
+                    alt="Logo de Affenbits" width="64" height="64" loading="lazy">
+                  <div class="tc-card__id">
+                    <h3 class="tc-card__name">Omar Gómez Escamilla</h3>
+                    <p class="tc-card__role">Director General en Nominus</p>
+                  </div>
+                </header>
+                <blockquote class="tc-card__quote">
+                  <p>“La mejor alternativa que podrán encontrar en reclutamiento humano, combina de una manera precisa y
+                    moderna las herramientas necesarias, para encontrar al candidato ideal para tu empresa, sin importar
+                    el giro de esta.”</p>
+                </blockquote>
+              </article>
+            </li>
+
+            <li class="tc-slide" role="group" aria-roledescription="diapositiva" aria-label="Comentario 6 de 12">
+              <article class="tc-card">
+                <header class="tc-card__header">
+                  <img class="tc-card__avatar" src="media/images/clientes/logo-portelo.webp" alt="Logo de Portèlo"
+                    width="64" height="64" loading="lazy">
+                  <div class="tc-card__id">
+                    <h3 class="tc-card__name">Valeria Filizola</h3>
+                    <p class="tc-card__role">Gerente de atención al cliente en Portèlo</p>
+                  </div>
+                </header>
+                <blockquote class="tc-card__quote">
+                  <p>“Talents Code fue un gran herramienta para ayudarnos a encontrar nuestro excelente desarrollador
+                    Back End en Portèlo. La atención y el seguimiento fue maravilloso y en tiempo acordado. Estoy muy
+                    contenta de haber elegido a Talents Code para reclutar y seleccionar a nuestro desarrollador”</p>
+                </blockquote>
+              </article>
+            </li>
+
+            <li class="tc-slide" role="group" aria-roledescription="diapositiva" aria-label="Comentario 7 de 12">
+              <article class="tc-card">
+                <header class="tc-card__header">
+                  <img class="tc-card__avatar" src="media/images/clientes/logo-bazar-de-canteras.webp"
+                    alt="Logo de Bazar de Canteras" width="64" height="64" loading="lazy">
+                  <div class="tc-card__id">
+                    <h3 class="tc-card__name">Rodrigo Reyes</h3>
+                    <p class="tc-card__role">Director General en Bazar de Canteras</p>
+                  </div>
+                </header>
+                <blockquote class="tc-card__quote">
+                  <p>“Agradezco mucho al equipo de Talents Code su profesionalismo para encontrar y seleccionar a los
+                    mejores talentos para mi empresa, su acompañamiento en todo momento dan la confianza de estar
+                    eligiendo al mejor talento para la empresa, Gracias Talents Code”</p>
+                </blockquote>
+              </article>
+            </li>
+
+            <li class="tc-slide" role="group" aria-roledescription="diapositiva" aria-label="Comentario 8 de 12">
+              <article class="tc-card">
+                <header class="tc-card__header">
+                  <img class="tc-card__avatar"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%23EAECEF'/%3E%3C/svg%3E"
+                    alt="Logo de Plog" width="64" height="64" loading="lazy">
+                  <div class="tc-card__id">
+                    <h3 class="tc-card__name">Ramón Franco</h3>
+                    <p class="tc-card__role">Director Comercial en Plog</p>
+                  </div>
+                </header>
+                <blockquote class="tc-card__quote">
+                  <p>“La experiencia de trabajar con Talents Code ha sido muy buena. Me dejaron una muy buena primera
+                    impresión al hacerme preguntas interesantes sobre las vacantes que teníamos, preguntas que hacer
+                    entender que saben sobre su trabajo y de lo que hacen.”</p>
+                </blockquote>
+              </article>
+            </li>
+
+            <li class="tc-slide" role="group" aria-roledescription="diapositiva" aria-label="Comentario 9 de 12">
+              <article class="tc-card">
+                <header class="tc-card__header">
+                  <img class="tc-card__avatar"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%23EAECEF'/%3E%3C/svg%3E"
+                    alt="Logo de Coatí" width="64" height="64" loading="lazy">
+                  <div class="tc-card__id">
+                    <h3 class="tc-card__name">Mario Hevia</h3>
+                    <p class="tc-card__role">CEO Adara Software & Founder en Coatí</p>
+                  </div>
+                </header>
+                <blockquote class="tc-card__quote">
+                  <p>“Hemos requerido los servicios de Talents Code en múltiples ocasiones y en todas ellas han sido
+                    reclutamientos exitosos. Han logrado presentarnos candidatos que se alinean a la visión estratégica
+                    y cultural de Coatí. Sin duda son mi primera opción.”</p>
+                </blockquote>
+              </article>
+            </li>
+
+            <li class="tc-slide" role="group" aria-roledescription="diapositiva" aria-label="Comentario 10 de 12">
+              <article class="tc-card">
+                <header class="tc-card__header">
+                  <img class="tc-card__avatar"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%23EAECEF'/%3E%3C/svg%3E"
+                    alt="Logo de Mantra" width="64" height="64" loading="lazy">
+                  <div class="tc-card__id">
+                    <h3 class="tc-card__name">Cristobal Acevedo Contreras</h3>
+                    <p class="tc-card__role">Director de Marketing Digital en Mantra</p>
+                  </div>
+                </header>
+                <blockquote class="tc-card__quote">
+                  <p>“Talents Code es una empresa altamente profesional y enfocada en resultados en la búsqueda
+                    correcta. Filtran muy bien y se enfocan correctamente en las necesidades digitales de hoy en día;
+                    validando los skills que están perfectamente alineados a las necesidades del puesto”</p>
+                </blockquote>
+              </article>
+            </li>
+
+            <li class="tc-slide" role="group" aria-roledescription="diapositiva" aria-label="Comentario 11 de 12">
+              <article class="tc-card">
+                <header class="tc-card__header">
+                  <img class="tc-card__avatar" src="media/images/clientes/logotipo-itineraria-150x150.webp"
+                    alt="Logo de Itineraria" width="64" height="64" loading="lazy">
+                  <div class="tc-card__id">
+                    <h3 class="tc-card__name">Diego Moguel</h3>
+                    <p class="tc-card__role">Director en Itineraria</p>
+                  </div>
+                </header>
+                <blockquote class="tc-card__quote">
+                  <p>Nos apoyaron en 2 puntos muy importantes de la empresa, los puntos debiles en el personal que
+                    teniamos y en la contratacion de nuevo talento, y fue de las mejores decisiones que hemos tomado.
+                    Estamos muy contentos con los resultados obtenidos.</p>
+                </blockquote>
+              </article>
+            </li>
+
+            <li class="tc-slide" role="group" aria-roledescription="diapositiva" aria-label="Comentario 12 de 12">
+              <article class="tc-card">
+                <header class="tc-card__header">
+                  <img class="tc-card__avatar" src="media/images/clientes/logo_hint_white.webp" alt="Logo de Hint"
+                    width="64" height="64" loading="lazy">
+                  <div class="tc-card__id">
+                    <h3 class="tc-card__name">Eduardo Del Torno</h3>
+                    <p class="tc-card__role">Director en Hint</p>
+                  </div>
+                </header>
+                <blockquote class="tc-card__quote">
+                  <p>“Son una agencia de reclutamiento de lo más profesional, siempre buscan entender tus necesidades y
+                    encontrar al talento ideal según tu vacante. Además están enfocados a las características de un
+                    contexto digital o con necesidades en tecnología.”</p>
+                </blockquote>
+              </article>
+            </li>
+
           </ul>
 
-          <!-- Comillas decorativas -->
-          <div class="testimonial__quote-mark" aria-hidden="true">
-            <svg viewBox="0 0 64 64">
-              <path
-                d="M26 22c0-6.6 5.4-12 12-12h6v6h-6c-3.3 0-6 2.7-6 6v8h12v18H26V22zm-20 0C6 15.4 11.4 10 18 10h6v6h-6c-3.3 0-6 2.7-6 6v8h12v18H6V22z"
-                fill="currentColor" />
-            </svg>
+          <div class="tc-nav-controls">
+            <button class="tc-nav tc-prev" type="button" aria-label="Comentario anterior">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+                <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
+            <button class="tc-nav tc-next" type="button" aria-label="Siguiente comentario">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+                <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
           </div>
 
-          <!-- Barra de progreso -->
-          <div class="testimonials__progress" aria-hidden="true">
-            <div class="testimonials__progress-fill"></div>
-          </div>
-        </div>
+          <ol class="tc-dots" role="tablist" aria-label="Navegación por diapositivas"></ol>
 
-        <!-- Controles -->
-        <div class="testimonials__controls">
-          <button class="tnav tnav--prev" aria-label="Testimonio anterior">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" />
-            </svg>
-          </button>
-
-          <div class="testimonials__pagination" aria-live="polite" aria-atomic="true">
-            <span class="current">1</span>
-            <span class="sep">/</span>
-            <span class="total">3</span>
+          <div class="tc-counter" aria-live="polite" aria-atomic="true">
+            <span class="tc-current" aria-hidden="true">1</span>
+            <span class="tc-sep" aria-hidden="true">/</span>
+            <span class="tc-total" aria-hidden="true">12</span>
           </div>
 
-          <button class="tnav tnav--next" aria-label="Siguiente testimonio">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" />
-            </svg>
-          </button>
         </div>
       </div>
     </section>
@@ -237,22 +629,86 @@
         </h2>
         <br><br><br>
         <ul class="clients__grid" role="list">
-          <li class="client"><img src="media/images/empresas_final/amederi.jpg" alt="Cliente 1" loading="lazy"
-              width="120" height="60"></li>
-          <li class="client"><img src="media/images/empresas_final/Baspul.jpg" alt="Cliente 2" loading="lazy"
-              width="120" height="60"></li>
-          <li class="client"><img src="media/images/empresas_final/bazar.png" alt="Cliente 3" loading="lazy" width="120"
-              height="60"></li>
-          <li class="client"><img src="media/images/empresas_final/cannto.png" alt="Cliente 4" loading="lazy"
-              width="120" height="60"></li>
-          <li class="client"><img src="media/images/empresas_final/growxagency_logo.jpeg" alt="Cliente 5" loading="lazy"
-              width="120" height="60"></li>
-          <li class="client"><img src="media/images/empresas_final/itineraria.jpg" alt="Cliente 6" loading="lazy"
-              width="120" height="60"></li>
-          <li class="client"><img src="media/images/empresas_final/merida-soft.png" alt="Cliente 7" loading="lazy"
-              width="120" height="60"></li>
-          <li class="client"><img src="media/images/empresas_final/todo_mkt.jpg" alt="Cliente 8" loading="lazy"
-              width="120" height="60"></li>
+          <li class="client"><img src="media/images/clientes/327355795_1809994789382062_8179752664100216481_n.png"
+              alt="Cliente 1" loading="lazy" width="120" height="60"></li>
+          <li class="client"><img src="media/images/clientes/61410450_1106802326188099_6276474922143318016_n.jpg"
+              alt="Cliente 1" loading="lazy" width="120" height="60">
+          </li>
+          <li class="client"><img src="media/images/clientes/675-8f4dd3c8-640w.webp" alt="Cliente 1" loading="lazy"
+              width="120" height="60">
+          </li>
+          <li class="client"><img src="media/images/clientes/9e94e522ed20215b3a2f07cac571e03b.jpg" alt="Cliente 1"
+              loading="lazy" width="120" height="60">
+          </li>
+          <li class="client"><img src="media/images/clientes/Affenbits-150x150.webp" alt="Cliente 1" loading="lazy"
+              width="120" height="60">
+          </li>
+          <li class="client"><img src="media/images/clientes/amederi.png" alt="Cliente 1" loading="lazy" width="120"
+              height="60">
+          </li>
+          <li class="client"><img src="media/images/clientes/canto jairala.png" alt="Cliente 1" loading="lazy"
+              width="120" height="60">
+          </li>
+          <li class="client"><img src="media/images/clientes/Coati.png" alt="Cliente 1" loading="lazy" width="120"
+              height="60">
+          </li>
+          <li class="client"><img src="media/images/clientes/fantastico-logo.png" alt="Cliente 1" loading="lazy"
+              width="120" height="60">
+          </li>
+          <li class="client"><img src="media/images/clientes/fundacion-portelo.png" alt="Cliente 1" loading="lazy"
+              width="120" height="60">
+          </li>
+          <li class="client"><img src="media/images/clientes/GrowXAgency.png" alt="Cliente 1" loading="lazy" width="120"
+              height="60">
+          </li>
+          <li class="client"><img src="media/images/clientes/images-removebg-preview.png" alt="Cliente 1" loading="lazy"
+              width="120" height="60">
+          </li>
+          <li class="client"><img src="media/images/clientes/itineraria.png" alt="Cliente 1" loading="lazy" width="120"
+              height="60">
+          </li>
+          <li class="client"><img src="media/images/clientes/landrada.png" alt="Cliente 1" loading="lazy" width="120"
+              height="60">
+          </li>
+          <li class="client"><img src="media/images/clientes/LOGO-CREABITAT-WEB.png" alt="Cliente 1" loading="lazy"
+              width="120" height="60">
+          </li>
+          <li class="client"><img src="media/images/clientes/Logo-Grupo-TAHA-Fondo-Blanco.png" alt="Cliente 1"
+              loading="lazy" width="120" height="60">
+          </li>
+          <li class="client"><img src="media/images/clientes/Logo-Manhattan.png" alt="Cliente 1" loading="lazy"
+              width="120" height="60">
+          </li>
+          <li class="client"><img src="media/images/clientes/logo-neustart-150x150.webp" alt="Cliente 1" loading="lazy"
+              width="120" height="60">
+          </li>
+          <li class="client"><img src="media/images/clientes/Logo.png" alt="Cliente 1" loading="lazy" width="120"
+              height="60">
+          </li>
+          <li class="client"><img src="media/images/clientes/Logo_comex.png" alt="Cliente 1" loading="lazy" width="120"
+              height="60">
+          </li>
+          <li class="client"><img src="media/images/clientes/logo_hint_white.webp" alt="Cliente 1" loading="lazy"
+              width="120" height="60">
+          </li>
+          <li class="client"><img src="media/images/clientes/logotipo-itineraria-150x150.webp" alt="Cliente 1"
+              loading="lazy" width="120" height="60">
+          </li>
+          <li class="client"><img src="media/images/clientes/losos.png" alt="Cliente 1" loading="lazy" width="120"
+              height="60">
+          </li>
+          <li class="client"><img src="media/images/clientes/mantra.png" alt="Cliente 1" loading="lazy" width="120"
+              height="60">
+          </li>
+          <li class="client"><img src="media/images/clientes/nominus.png" alt="Cliente 1" loading="lazy" width="120"
+              height="60">
+          </li>
+          <li class="client"><img src="media/images/clientes/plog.png" alt="Cliente 1" loading="lazy" width="120"
+              height="60">
+          </li>
+          <li class="client"><img src="media/images/clientes/profile-image-type-company-1845565-removebg-preview.png"
+              alt="Cliente 1" loading="lazy" width="120" height="60">
+          </li>
         </ul>
       </div>
     </section>
@@ -421,102 +877,202 @@
     }
   </script>
   <script src="media/js/script.js" defer></script>
-  <script>(function () {
-      const root = document.querySelector('#testimonios');
-      if (!root) return;
-
-      const track = root.querySelector('.testimonials__track');
-      const viewport = root.querySelector('.testimonials__viewport');
-      const prev = root.querySelector('.tnav--prev');
-      const next = root.querySelector('.tnav--next');
-      const currentEl = root.querySelector('.testimonials__pagination .current');
-      const totalEl = root.querySelector('.testimonials__pagination .total');
-      const progress = root.querySelector('.testimonials__progress'); // se ocultará
-
-      // Slides originales
+  <script>document.addEventListener('DOMContentLoaded', () => {
+      const carousel = document.querySelector('.tc-carousel');
+      const track = carousel.querySelector('.tc-track');
       const slides = Array.from(track.children);
-      const total = slides.length;
-      if (totalEl) totalEl.textContent = String(total);
+      const nextButton = document.querySelector('.tc-next');
+      const prevButton = document.querySelector('.tc-prev');
+      const counterCurrent = carousel.querySelector('.tc-current');
+      const counterTotal = carousel.querySelector('.tc-total');
 
-      // Clones para loop infinito
-      const firstClone = slides[0].cloneNode(true);
-      const lastClone = slides[slides.length - 1].cloneNode(true);
-      firstClone.setAttribute('aria-hidden', 'true');
-      lastClone.setAttribute('aria-hidden', 'true');
-      track.insertBefore(lastClone, slides[0]);
-      track.appendChild(firstClone);
+      if (!track || slides.length === 0) return;
 
-      // Estado
-      let index = 1; // primer slide real (después del clon inicial)
-      let slideW = 0;
+      // --- CORRECCIÓN CLAVE 1 ---
+      // Convertimos slideWidth a 'let' para poder actualizar su valor.
+      let slideWidth = slides[0].getBoundingClientRect().width;
 
-      function setSizes() {
-        slideW = viewport.clientWidth;
-        const panels = Array.from(track.children);
-        panels.forEach(panel => panel.style.flexBasis = slideW + 'px');
-        setTransform(false);
-        setViewportMinHeight();
-      }
+      // Función para actualizar la UI (botones y contador)
+      const updateUI = (targetIndex) => {
+        counterCurrent.textContent = targetIndex + 1;
+        counterTotal.textContent = slides.length;
+        prevButton.disabled = targetIndex === 0;
+        nextButton.disabled = targetIndex === slides.length - 1;
+      };
 
-      function setTransform(animate = true) {
-        if (!animate) track.style.transition = 'none';
-        track.style.transform = `translate3d(${-index * slideW}px, 0, 0)`;
-        if (!animate) {
-          void track.offsetHeight; // reflow
+      // Función para mover a una diapositiva específica
+      const moveToSlide = (targetIndex) => {
+        // Usamos la variable slideWidth que ahora siempre estará actualizada.
+        track.style.transform = `translateX(-${slideWidth * targetIndex}px)`;
+        slides.forEach((slide, index) => {
+          slide.classList.toggle('current-slide', index === targetIndex);
+        });
+        updateUI(targetIndex);
+      };
+
+      // --- CORRECCIÓN CLAVE 2 ---
+      // Función para recalcular el ancho y reposicionar el carrusel.
+      const handleResize = () => {
+        // Actualizamos el ancho de la diapositiva.
+        slideWidth = slides[0].getBoundingClientRect().width;
+        const currentIndex = slides.findIndex(slide => slide.classList.contains('current-slide'));
+
+        // Reposicionamos el carrusel sin animación para que no se vea un salto raro.
+        track.style.transition = 'none';
+        track.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
+
+        // Reactivamos la animación después de un instante.
+        setTimeout(() => {
           track.style.transition = '';
-        }
-        if (currentEl) currentEl.textContent = String(getRealIndex() + 1);
-      }
+        }, 100);
+      };
 
-      function getRealIndex() {
-        // index global con clones: 0 (lastClone), 1..total (reales), total+1 (firstClone)
-        if (index === 0) return total - 1;
-        if (index === total + 1) return 0;
-        return index - 1;
-      }
-
-      function goTo(targetIndex) {
-        index = targetIndex;
-        setTransform(true);
-      }
-
-      // Saltos silenciosos cuando caemos en clones
-      track.addEventListener('transitionend', () => {
-        if (index === 0) {
-          index = total;      // último real
-          setTransform(false);
-        } else if (index === total + 1) {
-          index = 1;          // primero real
-          setTransform(false);
+      // Event Listener para el botón "Siguiente"
+      nextButton.addEventListener('click', () => {
+        const currentIndex = slides.findIndex(slide => slide.classList.contains('current-slide'));
+        const nextIndex = currentIndex + 1;
+        if (nextIndex < slides.length) {
+          moveToSlide(nextIndex);
         }
       });
 
-      // Controles por botones únicamente
-      next?.addEventListener('click', () => goTo(index + 1));
-      prev?.addEventListener('click', () => goTo(index - 1));
+      // Event Listener para el botón "Anterior"
+      prevButton.addEventListener('click', () => {
+        const currentIndex = slides.findIndex(slide => slide.classList.contains('current-slide'));
+        const prevIndex = currentIndex - 1;
+        if (prevIndex >= 0) {
+          moveToSlide(prevIndex);
+        }
+      });
 
-      // Altura fija al mayor slide para evitar “saltos”
-      function setViewportMinHeight() {
-        const panels = Array.from(track.children);
-        const prevDisplay = panels.map(p => p.style.display);
-        panels.forEach(p => p.style.display = 'block');
-        const max = panels.reduce((m, p) => Math.max(m, p.offsetHeight), 0);
-        panels.forEach((p, i) => p.style.display = prevDisplay[i]);
-        viewport.style.minHeight = max + 'px';
+      // --- CORRECCIÓN CLAVE 3 ---
+      // Escuchamos el evento 'resize' para ejecutar nuestra función de recalcular.
+      window.addEventListener('resize', handleResize);
+
+      // Inicialización del carrusel
+      moveToSlide(0);
+    }); document.addEventListener('DOMContentLoaded', () => {
+      // --- SELECCIÓN DE ELEMENTOS ---
+      const carousel = document.querySelector('.tc-carousel');
+      if (!carousel) return;
+
+      const track = carousel.querySelector('.tc-track');
+      const slides = Array.from(track.children);
+      const nextButton = document.querySelector('.tc-next');
+      const prevButton = document.querySelector('.tc-prev');
+      const counterCurrent = carousel.querySelector('.tc-current');
+      const counterTotal = carousel.querySelector('.tc-total');
+
+      if (!track || slides.length === 0) return;
+
+      // --- ESTADO DEL CARRUSEL ---
+      let currentIndex = 0;
+      let isDragging = false;
+      let startPos = 0;
+      let currentTranslate = 0;
+      let prevTranslate = 0;
+      let animationID;
+      const slideWidth = slides[0].getBoundingClientRect().width;
+
+      // --- FUNCIONES PRINCIPALES ---
+      const setPositionByIndex = () => {
+        currentTranslate = currentIndex * -slideWidth;
+        prevTranslate = currentTranslate;
+        setSliderPosition();
+        updateUI();
+      };
+
+      const setSliderPosition = () => {
+        track.style.transform = `translateX(${currentTranslate}px)`;
+      };
+
+      const updateUI = () => {
+        if (counterCurrent && counterTotal) {
+          counterCurrent.textContent = currentIndex + 1;
+          counterTotal.textContent = slides.length;
+        }
+        if (prevButton && nextButton) {
+          prevButton.disabled = currentIndex === 0;
+          nextButton.disabled = currentIndex === slides.length - 1;
+        }
+      };
+
+      // --- EVENTOS DE BOTONES (ESCRITORIO) ---
+      nextButton.addEventListener('click', () => {
+        if (currentIndex < slides.length - 1) {
+          currentIndex += 1;
+          setPositionByIndex();
+        }
+      });
+
+      prevButton.addEventListener('click', () => {
+        if (currentIndex > 0) {
+          currentIndex -= 1;
+          setPositionByIndex();
+        }
+      });
+
+      // --- EVENTOS TÁCTILES (SWIPE EN MÓVILES) ---
+      slides.forEach((slide, index) => {
+        slide.addEventListener('touchstart', touchStart(index));
+        slide.addEventListener('touchend', touchEnd);
+        slide.addEventListener('touchmove', touchMove);
+      });
+
+      function touchStart(index) {
+        return function (event) {
+          currentIndex = index;
+          startPos = event.touches[0].clientX;
+          isDragging = true;
+          animationID = requestAnimationFrame(animation);
+          track.style.transition = 'none'; // Quitamos la transición para un arrastre fluido
+        }
       }
 
-      // Oculta la barra de progreso (no se usa si no hay autoplay)
-      if (progress) progress.setAttribute('hidden', '');
+      function touchEnd() {
+        isDragging = false;
+        cancelAnimationFrame(animationID);
 
-      // Init
-      setSizes();
-      index = 1;       // posiciona en primer slide real
-      setTransform(false);
+        const movedBy = currentTranslate - prevTranslate;
 
-      // Responsivo
-      window.addEventListener('resize', setSizes);
-      window.addEventListener('load', setSizes);
-    })();</script>
+        // Si se arrastró más de 50px, cambia de slide
+        if (movedBy < -50 && currentIndex < slides.length - 1) {
+          currentIndex += 1;
+        }
+
+        if (movedBy > 50 && currentIndex > 0) {
+          currentIndex -= 1;
+        }
+
+        track.style.transition = 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)'; // Reactivamos la transición
+        setPositionByIndex();
+      }
+
+      function touchMove(event) {
+        if (isDragging) {
+          const currentPosition = event.touches[0].clientX;
+          currentTranslate = prevTranslate + currentPosition - startPos;
+        }
+      }
+
+      function animation() {
+        setSliderPosition();
+        if (isDragging) requestAnimationFrame(animation);
+      }
+
+      // --- INICIALIZACIÓN Y RESIZE ---
+      const handleResize = () => {
+        track.style.transition = 'none';
+        setPositionByIndex();
+        setTimeout(() => {
+          track.style.transition = '';
+        }, 100);
+      };
+
+      window.addEventListener('resize', handleResize);
+      setPositionByIndex();
+    });</script>
+
 </body>
 
 </html>
