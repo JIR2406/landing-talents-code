@@ -55,7 +55,7 @@
       --color-subtle-text: #667085;
       /* Para el rol o cargo */
       --color-border: #EAECF0;
-      --color-accent: #000000;
+      --color-accent: #ffffff;
       /* Borde del avatar (morado) */
       --color-icon: #98A2B3;
       /* Flechas y contador */
@@ -284,6 +284,24 @@
         bottom: -20px;
       }
     }
+
+    .tc-card__avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      margin-right: 16px;
+      border: 2px solid var(--color-accent);
+
+      /* --- Ajustes clave para los logos --- */
+      object-fit: contain;
+      /* Asegura que todo el logo se vea, sin cortarlo */
+      background-color: #ffffff;
+      /* Añade un fondo blanco por si el logo es transparente */
+      padding: 8px;
+      /* Crea un pequeño margen interno para que el logo no toque los bordes */
+      box-sizing: border-box;
+      /* Asegura que el padding no aumente el tamaño total */
+    }
   </style>
 </head>
 
@@ -449,8 +467,8 @@
             <li class="tc-slide" role="group" aria-roledescription="diapositiva" aria-label="Comentario 5 de 12">
               <article class="tc-card">
                 <header class="tc-card__header">
-                  <img class="tc-card__avatar" src="media/images/clientes/Affenbits-150x150.webp"
-                    alt="Logo de Affenbits" width="64" height="64" loading="lazy">
+                  <img class="tc-card__avatar" src="media/images/clientes/nominus.png" alt="Logo de Affenbits"
+                    width="64" height="64" loading="lazy">
                   <div class="tc-card__id">
                     <h3 class="tc-card__name">Omar Gómez Escamilla</h3>
                     <p class="tc-card__role">Director General en Nominus</p>
@@ -467,7 +485,7 @@
             <li class="tc-slide" role="group" aria-roledescription="diapositiva" aria-label="Comentario 6 de 12">
               <article class="tc-card">
                 <header class="tc-card__header">
-                  <img class="tc-card__avatar" src="media/images/clientes/logo-portelo.webp" alt="Logo de Portèlo"
+                  <img class="tc-card__avatar" src="media/images/clientes/fundacion-portelo.png" alt="Logo de Portèlo"
                     width="64" height="64" loading="lazy">
                   <div class="tc-card__id">
                     <h3 class="tc-card__name">Valeria Filizola</h3>
@@ -485,7 +503,8 @@
             <li class="tc-slide" role="group" aria-roledescription="diapositiva" aria-label="Comentario 7 de 12">
               <article class="tc-card">
                 <header class="tc-card__header">
-                  <img class="tc-card__avatar" src="media/images/clientes/logo-bazar-de-canteras.webp"
+                  <img class="tc-card__avatar"
+                    src="media/images/clientes/327355795_1809994789382062_8179752664100216481_n.png"
                     alt="Logo de Bazar de Canteras" width="64" height="64" loading="lazy">
                   <div class="tc-card__id">
                     <h3 class="tc-card__name">Rodrigo Reyes</h3>
@@ -503,9 +522,8 @@
             <li class="tc-slide" role="group" aria-roledescription="diapositiva" aria-label="Comentario 8 de 12">
               <article class="tc-card">
                 <header class="tc-card__header">
-                  <img class="tc-card__avatar"
-                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%23EAECEF'/%3E%3C/svg%3E"
-                    alt="Logo de Plog" width="64" height="64" loading="lazy">
+                  <img class="tc-card__avatar" src="media/images/clientes/plog.png" alt="Logo de Bazar de Canteras"
+                    width="64" height="64" loading="lazy">
                   <div class="tc-card__id">
                     <h3 class="tc-card__name">Ramón Franco</h3>
                     <p class="tc-card__role">Director Comercial en Plog</p>
@@ -522,9 +540,8 @@
             <li class="tc-slide" role="group" aria-roledescription="diapositiva" aria-label="Comentario 9 de 12">
               <article class="tc-card">
                 <header class="tc-card__header">
-                  <img class="tc-card__avatar"
-                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%23EAECEF'/%3E%3C/svg%3E"
-                    alt="Logo de Coatí" width="64" height="64" loading="lazy">
+                  <img class="tc-card__avatar" src="media/images/clientes/Coati.png" alt="Logo de Bazar de Canteras"
+                    width="64" height="64" loading="lazy">
                   <div class="tc-card__id">
                     <h3 class="tc-card__name">Mario Hevia</h3>
                     <p class="tc-card__role">CEO Adara Software & Founder en Coatí</p>
@@ -541,9 +558,8 @@
             <li class="tc-slide" role="group" aria-roledescription="diapositiva" aria-label="Comentario 10 de 12">
               <article class="tc-card">
                 <header class="tc-card__header">
-                  <img class="tc-card__avatar"
-                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%23EAECEF'/%3E%3C/svg%3E"
-                    alt="Logo de Mantra" width="64" height="64" loading="lazy">
+                  <img class="tc-card__avatar" src="media/images/clientes/mantra.png" alt="Logo de Bazar de Canteras"
+                    width="64" height="64" loading="lazy">
                   <div class="tc-card__id">
                     <h3 class="tc-card__name">Cristobal Acevedo Contreras</h3>
                     <p class="tc-card__role">Director de Marketing Digital en Mantra</p>
@@ -560,8 +576,8 @@
             <li class="tc-slide" role="group" aria-roledescription="diapositiva" aria-label="Comentario 11 de 12">
               <article class="tc-card">
                 <header class="tc-card__header">
-                  <img class="tc-card__avatar" src="media/images/clientes/logotipo-itineraria-150x150.webp"
-                    alt="Logo de Itineraria" width="64" height="64" loading="lazy">
+                  <img class="tc-card__avatar" src="media/images/clientes/itineraria.png" alt="Logo de Itineraria"
+                    width="64" height="64" loading="lazy">
                   <div class="tc-card__id">
                     <h3 class="tc-card__name">Diego Moguel</h3>
                     <p class="tc-card__role">Director en Itineraria</p>
@@ -578,8 +594,8 @@
             <li class="tc-slide" role="group" aria-roledescription="diapositiva" aria-label="Comentario 12 de 12">
               <article class="tc-card">
                 <header class="tc-card__header">
-                  <img class="tc-card__avatar" src="media/images/clientes/logo_hint_white.webp" alt="Logo de Hint"
-                    width="64" height="64" loading="lazy">
+                  <img class="tc-card__avatar" src="media/images/clientes/people.png" alt="Logo de Hint" width="64"
+                    height="64" loading="lazy">
                   <div class="tc-card__id">
                     <h3 class="tc-card__name">Eduardo Del Torno</h3>
                     <p class="tc-card__role">Director en Hint</p>
